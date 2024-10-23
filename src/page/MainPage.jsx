@@ -1,9 +1,17 @@
 import React from 'react';
+import Layout from '../component/public/Layout';
+import { useRecoilValue } from 'recoil';
+import {TabListState} from '../recoil/state'
+import Profile from '../component/contents/Profile';
 
 const MainPage = () => {
+    const tabList = useRecoilValue(TabListState);
+
     return (
         <div>
-            <h1>MainPage</h1>
+            <Layout>
+
+            </Layout>
         </div>
     );
 };

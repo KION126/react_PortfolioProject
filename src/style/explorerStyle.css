@@ -1,0 +1,15 @@
+.border-div{
+    width: 4px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.border-div:hover{
+    width: 4px;
+    background-color: blue;
+    transition-delay: 0.3s;
+}
+
+.border-div-resizing{
+    width: 4px;
+    background-color: blue;
+}
