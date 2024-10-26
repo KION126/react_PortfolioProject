@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ARROW_DOWN from '../icon/arrow_down.png';
-import ARROW_RIGHT from '../icon/arrow_right.png';
+import ICON_ARROW_DOWN from '../icon/arrow_down.png';
+import ICON_ARROW_RIGHT from '../icon/arrow_right.png';
 import { useRecoilState } from 'recoil';
 import { TabListState } from '../recoil/state';
 
@@ -20,22 +20,12 @@ const ExplorerItem = (props) => {
     const handleClick = () => {
         // 이미 추가된 탭인지 확인
         const isTabAlreadyAdded = tabList.some(tab => tab.title === props.title);
-        if (!isTabAlreadyAdded) {
+        if (!props.item.children && !isTabAlreadyAdded) {
             // 새로운 탭 추가
-            setTabList([...tabList, { title: props.title }]);
+            setTabList([...tabList, { title: props.title, icon: props.icon }]);
         }
         toggleOpen();
         console.log(tabList);
-    };
-
-    // 탭 마우스 Enter 함수
-    const handleMouseEnter = () => {
-        setIsMouseEnter(true);
-    };
-
-    // 탭 마우스 Leave 함수
-    const handleMouseLeave = () => {
-        setIsMouseEnter(false);
     };
 
     return (
@@ -45,19 +35,28 @@ const ExplorerItem = (props) => {
                 className={`flex py-1 gap-1 text-[12px] cursor-pointer ${bgColor}`}
                 style={{ paddingLeft: padding}}
                 onClick={handleClick}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
+                onMouseEnter={() => setIsMouseEnter(true)}
+                onMouseLeave={() => setIsMouseEnter(false)}
             >
                 {/* 토글 아이콘 */}
                 {props.item.children && (
                     <img
-                        src={isOpen ? ARROW_DOWN : ARROW_RIGHT}
+                        src={isOpen ? ICON_ARROW_DOWN : ICON_ARROW_RIGHT}
                         alt={isOpen ? 'open' : 'close'}
                         className='size-4 self-center'
                     />
                 )}
-                <div>
-                    {props.title}
+                <div className='flex gap-1'>
+                    {!props.item.children && (
+                        <img
+                            src={require(`../icon/${props.icon}.png`)}
+                            alt="icon"
+                            className='size-[14px] self-center'
+                        />
+                    )}
+                    <div className='pb-1'>
+                        {props.title}
+                    </div>
                 </div>
             </div>
 
@@ -68,7 +67,8 @@ const ExplorerItem = (props) => {
                         <ExplorerItem 
                             key={index} 
                             item={child} 
-                            title={child.title} 
+                            title={child.title}
+                            icon={child.icon}
                             padding={parseInt(padding) + 20}
                         />
                     ))}
