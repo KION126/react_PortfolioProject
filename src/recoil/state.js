@@ -1,12 +1,13 @@
 import { atom, selector } from 'recoil';
 
+// Explorer, TopMenu에서 사용하는 선택한 메뉴 리스트 상태
 export const TabListState = atom({
     key: 'TabListState',
-    default: 0,
+    default: [],
     effects: [
         ({ setSelf, onSet }) => {
             // sessionStorage에서 데이터 가져올 때 배열로 변환
-            const savedTabs = sessionStorage.getItem('selectedTabs');
+            const savedTabs = sessionStorage.getItem('tabList');
             if (savedTabs) {
                 try {
                     setSelf(JSON.parse(savedTabs));
@@ -18,19 +19,45 @@ export const TabListState = atom({
 
             //  recoil의 값이 변경 될 때 해당 값을 sessionStorage에 저장
             onSet((state) => {
-                sessionStorage.setItem('selectedTabs', JSON.stringify(state));
+                sessionStorage.setItem('tabList', JSON.stringify(state));
             });
         },
     ],
 });
 
+// ExplorerItem에서 사용하는 open된 폴더 리스트 상태
+export const OpenForderListState = atom({
+    key: 'OpenForderListState',
+    default: [],
+    effects: [
+        ({ setSelf, onSet }) => {
+            // sessionStorage에서 데이터 가져올 때 배열로 변환
+            const savedTabs = sessionStorage.getItem('openForderList');
+            if (savedTabs) {
+                try {
+                    setSelf(JSON.parse(savedTabs));
+                } catch (error) {
+                    console.error("저장된 탭을 파싱하는데 실패했습니다:", error);
+                    setSelf([]); // 파싱 실패 시 빈 배열로 설정
+                }
+            }
+
+            //  recoil의 값이 변경 될 때 해당 값을 sessionStorage에 저장
+            onSet((state) => {
+                sessionStorage.setItem('openForderList', JSON.stringify(state));
+            });
+        },
+    ],
+});
+
+// Explorer, TopMenu, MainPage에서 사용하는 현재 선택한 탭(열려있는 탭) 상태
 export const SelectedTabState = atom({
     key: 'SelectedTabState',
-    default: 0,
+    default: null,
     effects: [
         ({ setSelf, onSet }) => {
             // recoil이 호출될 때 sessionStorage에서 상태를 가져와서 설정
-            const value = String(sessionStorage.getItem('selectedTab')) || 0;
+            const value = String(sessionStorage.getItem('selectedTab')) || null;
             setSelf(value);
 
             //  recoil의 값이 변경 될 때 해당 값을 sessionStorage에 저장

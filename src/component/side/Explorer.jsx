@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import '../../style/explorerStyle.css';
 import ExplorerItem from '../ExplorerItem';
-import { useRecoilValue} from 'recoil';
-import { TabListState } from '../../recoil/state';
 import fileStructureData from '../../jsonData/FileStructureData.json';
 
 const Explorer = () => {
     const [isResizing, setIsResizing] = useState(false);    // 클릭 여부
     const [width, setWidth] = useState(200);                // 너비
     const [initialX, setInitialX] = useState(0);            // 초기 X 좌표
-
-    const tabList = useRecoilValue(TabListState);   // 세션에 저장 된 탭 리스트 가져오기
 
     let borderDiv = isResizing ? 'border-div-resizing' : 'border-div';
 
@@ -64,7 +60,7 @@ const Explorer = () => {
                     <div className='px-4 py-2 text-[11px]'>
                         탐색기
                     </div>
-                    <ExplorerItem item={fileStructureData} title={fileStructureData.title} padding='0' tabList={tabList}/>
+                    <ExplorerItem item={fileStructureData} title={fileStructureData.title} padding='0'/>
                 </div>
             </div>
             <div className='relative'>
