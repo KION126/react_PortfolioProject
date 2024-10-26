@@ -11,8 +11,8 @@ const TopMenu = () => {
     const [removedIndex, setRemovedIndex] = useState(null); // 제거된 탭의 인덱스
 
     // 탭 클릭 이벤트
-    const handleClick = (index) => {
-        setSelectedTab(index);
+    const handleClick = (title) => {
+        setSelectedTab(title);
     };
 
     // 탭 제거 이벤트
@@ -27,7 +27,14 @@ const TopMenu = () => {
     useEffect(() => {
         if (removedIndex !== null) {    // 제거된 탭이 있을 경우
             if (tabList.length !== 0) { // 탭이 존재할 경우
-                setSelectedTab(removedIndex-1); // 제거된 탭의 앞 탭 선택
+                const previousIndex = removedIndex - 1; // 앞 탭의 인덱스
+                const nextIndex = removedIndex; // 뒷 탭의 인덱스
+
+                if (previousIndex >= 0 && previousIndex < tabList.length) {
+                    setSelectedTab(tabList[previousIndex].title); // 앞 탭의 title로 설정
+                } else if (nextIndex >= 0 && nextIndex < tabList.length) {
+                    setSelectedTab(tabList[nextIndex].title); // 뒷 탭의 title로 설정
+                }
             }
             setRemovedIndex(null);  // 제거된 탭 상태 초기화
         }
@@ -42,12 +49,12 @@ const TopMenu = () => {
                     return (
                         <div 
                             key={index} 
-                            className={`table-cell h-8 border border-[#2B2B2B] cursor-pointer hover:bg-[#1F1F1F] ${index === selectedTab && 'bg-[#1F1F1F] border-b-0'}`}
-                            onClick={() => handleClick(index)}
+                            className={`table-cell h-8 border border-[#2B2B2B] cursor-pointer hover:bg-[#1F1F1F] ${tab.title === selectedTab && 'bg-[#1F1F1F] border-b-0'}`}
+                            onClick={() => handleClick(tab.title)}
                             onMouseEnter={() => setHoveredTabIndex(index)}
                             onMouseLeave={() => setHoveredTabIndex(null)}
                         >
-                             <div className={`${index === selectedTab && 'w-full border-t border-blue-600'}`}></div>
+                             <div className={`${tab.title === selectedTab && 'w-full border-t border-blue-600'}`}></div>
 
                             <div className='flex h-full px-2 items-center gap-1'>
                                 <div className='size-4'>

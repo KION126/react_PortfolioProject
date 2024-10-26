@@ -1,42 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ICON_ARROW_DOWN from '../icon/arrow_down.png';
 import ICON_ARROW_RIGHT from '../icon/arrow_right.png';
 import { useRecoilState } from 'recoil';
 import { TabListState } from '../recoil/state';
+import { SelectedTabState } from '../recoil/state';
 
 const ExplorerItem = (props) => {
     const [isOpen, setIsOpen] = useState(false);    // 탭 오픈 여부
-    const [isMouseEnter, setIsMouseEnter] = useState(false);    // 마우스 호버 여부
     const [tabList, setTabList] = useRecoilState(TabListState);
-    let bgColor = isMouseEnter ? 'bg-[#292c2d]' : 'bg-[#181818]';
+    const [selectedTab, setSelectedTab] = useRecoilState(SelectedTabState); // 선택된 탭
     const padding = props.padding ? `${props.padding}px` : '0px';
 
-    // 탭 토글 함수
-    const toggleOpen = () => {
-        setIsOpen(!isOpen);
-    };
-
     // 탭 클릭 함수
-    const handleClick = () => {
+    const handleClick = (isFile, title) => {
+        // 파일일 경우 선택된 탭으로 설정
+        !isFile && setSelectedTab(title);
+        
         // 이미 추가된 탭인지 확인
         const isTabAlreadyAdded = tabList.some(tab => tab.title === props.title);
         if (!props.item.children && !isTabAlreadyAdded) {
             // 새로운 탭 추가
             setTabList([...tabList, { title: props.title, icon: props.icon }]);
         }
-        toggleOpen();
-        console.log(tabList);
+        setIsOpen(!isOpen); // 탭 오픈 여부 토글
     };
 
     return (
         <div className={`${padding}`}>
             {/* 상위 탭 */}
             <div 
-                className={`flex py-1 gap-1 text-[12px] cursor-pointer ${bgColor}`}
+                className={`flex py-[2px] gap-1 text-[12px] bg-[#181818] cursor-pointer hover:bg-[#2a2d2e] ${selectedTab === props.title && 'bg-[#37373d] hover:bg-[#37373d]'}`}
                 style={{ paddingLeft: padding}}
-                onClick={handleClick}
-                onMouseEnter={() => setIsMouseEnter(true)}
-                onMouseLeave={() => setIsMouseEnter(false)}
+                onClick={() => handleClick(props.item.children, props.title)}
             >
                 {/* 토글 아이콘 */}
                 {props.item.children && (
@@ -47,6 +42,7 @@ const ExplorerItem = (props) => {
                     />
                 )}
                 <div className='flex gap-1'>
+                    {/* 파일 아이콘 */}
                     {!props.item.children && (
                         <img
                             src={require(`../icon/${props.icon}.png`)}

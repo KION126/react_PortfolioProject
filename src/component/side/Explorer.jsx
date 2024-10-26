@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../style/explorerStyle.css';
 import ExplorerItem from '../ExplorerItem';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue} from 'recoil';
 import { TabListState } from '../../recoil/state';
 import fileStructureData from '../../jsonData/FileStructureData.json';
 
@@ -9,9 +9,8 @@ const Explorer = () => {
     const [isResizing, setIsResizing] = useState(false);    // 클릭 여부
     const [width, setWidth] = useState(200);                // 너비
     const [initialX, setInitialX] = useState(0);            // 초기 X 좌표
-    let isHovering = false;                                 // 호버 여부
 
-    const [tabList, setTabList] = useRecoilState(TabListState);   // 탭 리스트
+    const tabList = useRecoilValue(TabListState);   // 세션에 저장 된 탭 리스트 가져오기
 
     let borderDiv = isResizing ? 'border-div-resizing' : 'border-div';
 
