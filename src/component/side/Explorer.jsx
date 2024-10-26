@@ -10,7 +10,7 @@ const Explorer = () => {
     const [initialX, setInitialX] = useState(0);            // 초기 X 좌표
     let isHovering = false;                                 // 호버 여부
 
-    const tabList = useRecoilState([TabListState]);   // 탭 리스트
+    const [tabList, setTabList] = useRecoilState(TabListState);   // 탭 리스트
 
     const data = {
         title: "PORTFOLIO",
@@ -19,18 +19,22 @@ const Explorer = () => {
                 title: "About",
                 children: [
                     { title: "profile",
-                    
-                     },
-                    { title: "about" }
+                      icon: "about"
+                    },
+                    { title: "about",
+                      icon: "about"
+                    }
                 ]
             },
             { 
                 title: "Project",
                 children: [
-                    { title: "profile",
-                    
-                     },
-                    { title: "about" }
+                    { title: "project1",
+                      icon: "light"
+                    },
+                    { title: "project2",
+                      icon: "light"
+                    }
                 ]
              },
         ]
@@ -54,10 +58,7 @@ const Explorer = () => {
         if (isResizing) {
             const newWidth = width + (e.clientX - initialX);
 
-            if(newWidth => 150 && newWidth <= 800){
-                setInitialX(e.clientX);
-            } 
-            if(newWidth <= 800){
+            if(newWidth <= 700){
                 if(newWidth <= 150){
                     if(e.clientX <= 75){
                         setWidth(0);
@@ -85,7 +86,7 @@ const Explorer = () => {
     }, [isResizing]);
 
     return (
-        <div className='flex h-screen bg-[#181818] text-[#c1cccc] border-l border-[#222222]'>
+        <div className='flex h-screen bg-[#181818] text-[#c1cccc] border-l border-[#2B2B2B]'>
             <div style={{width}}>
                 <div>
                     <div className='px-4 py-2 text-[11px]'>
@@ -100,7 +101,7 @@ const Explorer = () => {
                     onMouseDown={handleMouseDown}
                     onMouseUp={handleMouseUp}
                 />
-                <div className='w-[1px] bg-[#222222] absolute top-0 left-0 right-0 bottom-0'/>
+                <div className='w-[1px] bg-[#2B2B2B] absolute top-0 left-0 right-0 bottom-0'/>
             </div>
         </div>
     );
