@@ -3,6 +3,7 @@ import '../../style/explorerStyle.css';
 import ExplorerItem from '../ExplorerItem';
 import { useRecoilState } from 'recoil';
 import { TabListState } from '../../recoil/state';
+import fileStructureData from '../../jsonData/FileStructureData.json';
 
 const Explorer = () => {
     const [isResizing, setIsResizing] = useState(false);    // 클릭 여부
@@ -11,34 +12,6 @@ const Explorer = () => {
     let isHovering = false;                                 // 호버 여부
 
     const [tabList, setTabList] = useRecoilState(TabListState);   // 탭 리스트
-
-    const data = {
-        title: "PORTFOLIO",
-        children: [
-            {
-                title: "About",
-                children: [
-                    { title: "profile",
-                      icon: "about"
-                    },
-                    { title: "about",
-                      icon: "about"
-                    }
-                ]
-            },
-            { 
-                title: "Project",
-                children: [
-                    { title: "project1",
-                      icon: "light"
-                    },
-                    { title: "project2",
-                      icon: "light"
-                    }
-                ]
-             },
-        ]
-    };
 
     let borderDiv = isResizing ? 'border-div-resizing' : 'border-div';
 
@@ -92,7 +65,7 @@ const Explorer = () => {
                     <div className='px-4 py-2 text-[11px]'>
                         탐색기
                     </div>
-                    <ExplorerItem item={data} title={data.title} padding='0' tabList={tabList}/>
+                    <ExplorerItem item={fileStructureData} title={fileStructureData.title} padding='0' tabList={tabList}/>
                 </div>
             </div>
             <div className='relative'>

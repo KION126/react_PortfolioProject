@@ -1,0 +1,19 @@
+{
+    "title": "PORTFOLIO",
+    "children": [
+        {
+            "title": "About",
+            "children": [
+                { "title": "profile", "icon": "about" },
+                { "title": "about", "icon": "about" }
+            ]
+        },
+        { 
+            "title": "Project",
+            "children": [
+                { "title": "project1", "icon": "light" },
+                { "title": "project2", "icon": "light" }
+            ]
+        }
+    ]
+}
