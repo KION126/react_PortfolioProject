@@ -12,7 +12,7 @@ const MainPage = () => {
     // 무한 랜더링 문제를 해결하기 위해 useMemo 사용
     const SelectTabComponent = useMemo(() => {
         if(selectedTabFile == null) return null;
-        
+
         return lazy(() =>
             import(`../component/contents/${selectedTabFile}`)
         );
@@ -21,12 +21,11 @@ const MainPage = () => {
     return (
         <div>
             <Layout>
-                    {/* 선택된 탭에 따라 동적으로 로딩 
-                    - Suspense: 로딩 중일 때 보여줄 컴포넌트 */}
+                    {/* 선택된 탭에 따라 동적으로 로딩 */}
                     {SelectTabComponent  && 
-                    <Suspense fallback={<div>Loading...</div>}>
-                        <SelectTabComponent />
-                    </Suspense>
+                        <Suspense>
+                            <SelectTabComponent />
+                        </Suspense>
                     }
             </Layout>
         </div>

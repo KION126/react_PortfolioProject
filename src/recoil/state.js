@@ -1,9 +1,9 @@
-import { atom, selector } from 'recoil';
+import { atom } from 'recoil';
 
 // Explorer, TopMenu에서 사용하는 선택한 메뉴 리스트 상태
 export const TabListState = atom({
     key: 'TabListState',
-    default: [],
+    default: [{'title':'Welcome', 'icon':'logo'}],
     effects: [
         ({ setSelf, onSet }) => {
             // sessionStorage에서 데이터 가져올 때 배열로 변환
@@ -53,7 +53,7 @@ export const OpenForderListState = atom({
 // Explorer, TopMenu, MainPage에서 사용하는 현재 선택한 탭(열려있는 탭) 상태
 export const SelectedTabState = atom({
     key: 'SelectedTabState',
-    default: null,
+    default: "Welcome",
     effects: [
         ({ setSelf, onSet }) => {
             // sessionStorage에서 데이터 가져올 때 배열로 변환
