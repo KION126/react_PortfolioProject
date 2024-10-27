@@ -42,6 +42,8 @@ const ExplorerItem = (props) => {
         const isTabOpened = openForderList && openForderList.some(tab => tab === props.title);
         if(isTabOpened) {
             setIsOpen(true);
+        } else {
+            setIsOpen(false);
         }
     }, []);
 
@@ -49,7 +51,7 @@ const ExplorerItem = (props) => {
         <div className={`${padding}`}>
             {/* 상위 탭 */}
             <div 
-                className={`flex gap-1 text-[12px] bg-[#181818] cursor-pointer hover:bg-[#2a2d2e] ${selectedTab === props.title && 'bg-[#37373d] hover:bg-[#37373d]'}`}
+                className={`flex gap-1 text-[12px] bg-[#181818] cursor-pointer  hover:bg-[#2a2d2e] ${selectedTab === props.title && 'bg-[#37373d] hover:bg-[#37373d]'} `}
                 style={{ paddingLeft: padding}}
                 onClick={() => handleClick(!props.item.children, props.title)}
             >

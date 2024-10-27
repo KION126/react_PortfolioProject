@@ -4,15 +4,18 @@
         {
             "title": "About",
             "children": [
-                { "title": "profile", "icon": "about" },
-                { "title": "about", "icon": "about" }
+                { "title": "Profile.abt", "icon": "about" },
+                { "title": "About.abt", "icon": "about" }
             ]
         },
         { 
             "title": "Project",
             "children": [
-                { "title": "project1", "icon": "light" },
-                { "title": "project2", "icon": "light" }
+                { "title": "OnlineLecture.pj", "icon": "light" },
+                { "title": "InhatcChatbot.pj", "icon": "light" },
+                { "title": "InhatcChinema.pj", "icon": "light" },
+                { "title": "KinectMemoryGame.pj", "icon": "light" },
+                { "title": "Gganboo.pj", "icon": "light" }
             ]
         }
     ]
