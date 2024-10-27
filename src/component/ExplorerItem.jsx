@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import ICON_ARROW_DOWN from '../icon/arrow_down.png';
-import ICON_ARROW_RIGHT from '../icon/arrow_right.png';
+import ICON_ARROW_DOWN from '../image/arrow_down.png';
+import ICON_ARROW_RIGHT from '../image/arrow_right.png';
 import { useRecoilState } from 'recoil';
 import { TabListState, SelectedTabState, OpenForderListState } from '../recoil/state';
 
@@ -67,7 +67,7 @@ const ExplorerItem = (props) => {
                     {/* 파일 아이콘 */}
                     {!props.item.children && (
                         <img
-                            src={require(`../icon/${props.icon}.png`)}
+                            src={require(`../image/${props.icon}.png`)}
                             alt="icon"
                             className='size-[14px] self-center'
                         />

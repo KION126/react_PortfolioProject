@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { TabListState } from '../../recoil/state';
 import { SelectedTabState } from '../../recoil/state';
-import ICON_CLOSE from '../../icon/close.png';
+import ICON_CLOSE from '../../image/close.png';
 
 const TopMenu = () => {
     const [tabList, setTabList] = useRecoilState(TabListState); // 탭 리스트
@@ -60,10 +60,10 @@ const TopMenu = () => {
 
                             <div className='flex h-full px-2 items-center gap-1'>
                                 <div className='size-4'>
-                                    <img src={require(`../../icon/${tab.icon}.png`)} alt='close' className='self-center size-4'>
+                                    <img src={require(`../../image/${tab.icon}.png`)} alt='close' className='self-center size-4'>
                                     </img>
                                 </div>
-                                <div className='text-[14px] pb-1'>
+                                <div className='text-[14px]'>
                                     {tab.title}
                                 </div>
                                 <div className='size-[18px]'>
