@@ -1,0 +1,15 @@
+.border-div2{
+    height: 4px;
+    transition: height 0.3s ease, background-color 0.3s ease;
+}
+
+.border-div2:hover{
+    height: 4px;
+    background-color: #A48ACF  ;
+    transition-delay: 0.3s;
+}
+
+.border-div2-resizing{
+    height: 4px;
+    background-color: #A48ACF  ;
+}

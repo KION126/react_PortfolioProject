@@ -3,9 +3,8 @@ import '../../style/explorerStyle.css';
 import ExplorerItem from '../ExplorerItem';
 import fileStructureData from '../../jsonData/FileStructureData.json';
 
-const Explorer = () => {
+const Explorer = ({ setExplorerWidth, width }) => {
     const [isResizing, setIsResizing] = useState(false);    // 클릭 여부
-    const [width, setWidth] = useState(200);                // 너비
     const [initialX, setInitialX] = useState(0);            // 초기 X 좌표
 
     let borderDiv = isResizing ? 'border-div-resizing' : 'border-div';
@@ -26,13 +25,14 @@ const Explorer = () => {
         if (isResizing) {
             const newWidth = width + (e.clientX - initialX);
 
+            // 너비 제한 설정
             if(newWidth <= 700){
                 if(newWidth <= 150){
-                    if(e.clientX <= 75){
-                        setWidth(0);
+                    if(e.clientX <= 75){    // 최소 너비(150px)에서 커서를 왼쪽으로 이동시 탐색기 닫기    
+                        setExplorerWidth(0);
                     }
                 } else{
-                    setWidth(newWidth);
+                    setExplorerWidth(newWidth);
                 }
             }
         }
