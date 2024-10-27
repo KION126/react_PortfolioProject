@@ -5,11 +5,11 @@
 
 .border-div:hover{
     width: 4px;
-    background-color: blue;
+    background-color: #A48ACF  ;
     transition-delay: 0.3s;
 }
 
 .border-div-resizing{
     width: 4px;
-    background-color: blue;
+    background-color: #A48ACF  ;
 }

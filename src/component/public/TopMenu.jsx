@@ -35,6 +35,8 @@ const TopMenu = () => {
                 } else if (nextIndex >= 0 && nextIndex < tabList.length) {
                     setSelectedTab(tabList[nextIndex].title); // 뒷 탭의 title로 설정
                 }
+            } else{
+                setSelectedTab(null); // 탭이 없을 경우 선택된 탭 초기화
             }
             setRemovedIndex(null);  // 제거된 탭 상태 초기화
         }
@@ -54,7 +56,7 @@ const TopMenu = () => {
                             onMouseEnter={() => setHoveredTabIndex(index)}
                             onMouseLeave={() => setHoveredTabIndex(null)}
                         >
-                             <div className={`${tab.title === selectedTab && 'w-full border-t border-blue-600'}`}></div>
+                             <div className={`${tab.title === selectedTab && 'w-full border-t border-[#A48ACF]'}`}></div>
 
                             <div className='flex h-full px-2 items-center gap-1'>
                                 <div className='size-4'>
