@@ -1,84 +1,59 @@
 import React, { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { TabListState } from '../../recoil/state';
-import { SelectedTabState } from '../../recoil/state';
-import ICON_CLOSE from '../../image/close.png';
+import MenuButton from './MenuButton';
+import WindowButton from './WindowButton';
+import IMG_LOGO from '../../image/logo.png';
+import ICON_SEARCH from '../../image/search.svg';
+import ICON_MENU from '../../image/menu.svg';
 
 const TopMenu = () => {
-    const [tabList, setTabList] = useRecoilState(TabListState); // 탭 리스트
-    const [selectedTab, setSelectedTab] = useRecoilState(SelectedTabState); // 선택된 탭
-    const [hoveredTabIndex, setHoveredTabIndex] = useState(null); // 현재 호버된 탭의 인덱스
-    const [removedIndex, setRemovedIndex] = useState(null); // 제거된 탭의 인덱스
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    const handleResize = () => {
+        setWindowWidth(window.innerWidth)
+    }
 
-    // 탭 클릭 이벤트
-    const handleClick = (title) => {
-        setSelectedTab(title);
-    };
-
-    // 탭 제거 이벤트
-    const handleRemove = (index) => {
-        // tabList에서 해당 index로 tabList에서 제거
-        setTabList(tabList.filter((_, i) => i !== index));
-        // 제거된 탭의 인덱스 저장
-        setRemovedIndex(index);
-    };
-
-    // 탭 제거 유효성 검사
     useEffect(() => {
-        if (removedIndex !== null) {    // 제거된 탭이 있을 경우
-            if (tabList.length !== 0) { // 탭이 존재할 경우
-                const previousIndex = removedIndex - 1; // 앞 탭의 인덱스
-                const nextIndex = removedIndex; // 뒷 탭의 인덱스
+        //1360px 이하일 경우 드롭다운 메뉴로 변경
+        window.addEventListener('resize', handleResize)
 
-                if (previousIndex >= 0 && previousIndex < tabList.length) {
-                    setSelectedTab(tabList[previousIndex].title); // 앞 탭의 title로 설정
-                } else if (nextIndex >= 0 && nextIndex < tabList.length) {
-                    setSelectedTab(tabList[nextIndex].title); // 뒷 탭의 title로 설정
-                }
-            } else{
-                setSelectedTab(null); // 탭이 없을 경우 선택된 탭 초기화
-            }
-            setRemovedIndex(null);  // 제거된 탭 상태 초기화
+        // 컴포넌트 언마운트 시 이벤트 리스너 삭제
+        return () => {
+          window.removeEventListener('resize', handleResize)
         }
-    }, [tabList, removedIndex, setSelectedTab]);
+      }, [])
 
     return (
-        <div className="w-full bg-[#181818] text-white">
-            <div className='table border-collapse'>
-                {tabList.map((tab, index) => {
-                    const isHovered = hoveredTabIndex === index;
-
-                    return (
-                        <div 
-                            key={index} 
-                            className={`table-cell h-8 border border-[#2B2B2B] cursor-pointer hover:bg-[#1F1F1F] ${tab.title === selectedTab && 'bg-[#1F1F1F] border-b-0'}`}
-                            onClick={() => handleClick(tab.title)}
-                            onMouseEnter={() => setHoveredTabIndex(index)}
-                            onMouseLeave={() => setHoveredTabIndex(null)}
-                        >
-                             <div className={`${tab.title === selectedTab && 'w-full border-t border-[#A48ACF]'}`}></div>
-
-                            <div className='flex h-full px-2 items-center gap-1'>
-                                <div className='size-4'>
-                                    <img src={require(`../../image/${tab.icon}.png`)} alt='close' className='self-center size-4'>
-                                    </img>
-                                </div>
-                                <div className='text-[14px]'>
-                                    {tab.title}
-                                </div>
-                                <div className='size-[18px]'>
-                                    {isHovered && (
-                                        <img src={ICON_CLOSE} alt='close' className='p-1 self-center rounded-[4px] hover:bg-[#313232]'
-                                        onClick={() => handleRemove(index)}>
-                                        </img>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    );
-                })}
+        <nav className='flex bg-[#181818] border-b border-[#2B2B2B] h-full text-white items-center'>
+            <div className='flex-1 flex'>
+                <img src={IMG_LOGO} alt='logo' className='size-4 mx-2 self-center'/>
+                {windowWidth <= 1360 ? (
+                    <div className=''>
+                        <img src={ICON_MENU} alt='logo' className='size-5 mx-2'/>
+                        
+                    </div>
+                    ):(
+                    <ul className='flex gap-1 items-center'>
+                        <li><MenuButton title='파일'/></li>
+                        <li><MenuButton title='편집'/></li>
+                        <li><MenuButton title='선택영역'/></li>
+                        <li><MenuButton title='보기'/></li>
+                        <li><MenuButton title='이동'/></li>
+                        <li><MenuButton title='실행'/></li>
+                        <li><MenuButton title='터미널'/></li>
+                        <li><MenuButton title='도움말'/></li>
+                    </ul>)
+                }
             </div>
-        </div>
+            
+            <div className='flex-1 flex justify-center h-[70%]'>
+                <div className='flex justify-center border border-[#454545] bg-[#242424] rounded-md text-[12px] w-[80%] gap-1'>
+                    <img src={ICON_SEARCH} alt='search' className='-scale-x-100'></img>
+                    <p className='self-end pb-[2px]'>Goen's Portfolio</p>
+                </div>
+            </div>
+            <div className='flex-1 flex justify-end h-full'>
+                <WindowButton />
+            </div>
+        </nav>
     );
 };
 

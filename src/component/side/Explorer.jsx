@@ -54,7 +54,7 @@ const Explorer = ({ setExplorerWidth, width }) => {
     }, [isResizing]);
 
     return (
-        <div className='flex h-screen bg-[#181818] text-[#c1cccc] border-l border-[#2B2B2B]'>
+        <div className='flex h-full bg-[#181818] text-[#c1cccc] border-l border-[#2B2B2B]'>
             <div style={{width}}>
                 <div>
                     <div className='px-4 py-2 text-[11px]'>
