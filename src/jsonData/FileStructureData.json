@@ -11,12 +11,15 @@
         { 
             "title": "Project",
             "children": [
-                { "title": "OnlineLecture.pj", "icon": "light" },
-                { "title": "InhatcChatbot.pj", "icon": "light" },
-                { "title": "InhatcChinema.pj", "icon": "light" },
-                { "title": "KinectMemoryGame.pj", "icon": "light" },
-                { "title": "GganBoo.pj", "icon": "light" }
+                { "title": "OnlineLecture.pj", "icon": "light", "github": "https://github.com/KION126/jsp_mvc2_OnlineLecturePlatform", "video": "https://www.youtube.com/watch?v=NS61b8G-Pgg"},
+                { "title": "InhatcChatbot.pj", "icon": "light", "github": "https://github.com/KION126/aiChatbot_InhatcChatbot", "video": "https://www.youtube.com/watch?v=pj1pUCk8b_E", "paper": "https://ibookkorea.net/Viewer/2024-02/547"},
+                { "title": "InhatcChinema.pj", "icon": "light", "github": "https://github.com/KION126/java_GUI_InhaCinema"},
+                { "title": "KinectMemoryGame.pj", "icon": "light", "github": "https://github.com/KION126/kinect_wpf_PreventionofDementiaMemoryCardGame", "video": "https://www.youtube.com/watch?v=PsFfGQzYxiE", "paper": "https://ibookkorea.net/Viewer/2024-01/113"},
+                { "title": "GganBoo.pj", "icon": "light", "github": "https://github.com/KION126/android_java_GganBoo" }
             ]
+        },
+        {
+            "title": "Contact.ct", "icon": "contact"
         }
     ]
 }
