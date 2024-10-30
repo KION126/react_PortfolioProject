@@ -9,7 +9,7 @@ const MainPage = () => {
     const selectedTabFile = selectedTab !== null ? selectedTab.split('.')[0] : null;
 
     // 선택된 탭에 따라 컴포넌트를 동적으로 로딩
-    // 무한 랜더링 문제를 해결하기 위해 useMemo 사용
+    // 리랜더링 문제를 해결하기 위해 useMemo 사용
     const SelectTabComponent = useMemo(() => {
         if(selectedTabFile == null) return null;
 

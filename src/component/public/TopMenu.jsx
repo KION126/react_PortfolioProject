@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import MenuButton from './MenuButton';
 import WindowButton from './WindowButton';
 import IMG_LOGO from '../../image/logo.png';
-import ICON_SEARCH from '../../image/search.svg';
+import { ReactComponent as ICON_SEARCH } from '../../image/search.svg';
 import ICON_MENU from '../../image/menu.svg';
 
-const TopMenu = () => {
+const TopMenu = React.memo(() => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
     const handleResize = () => {
         setWindowWidth(window.innerWidth)
@@ -44,9 +44,9 @@ const TopMenu = () => {
             </div>
             
             <div className='flex-1 flex justify-center h-[70%]'>
-                <div className='flex justify-center border border-[#454545] bg-[#242424] rounded-md text-[12px] w-[80%] gap-1'>
-                    <img src={ICON_SEARCH} alt='search' className='-scale-x-100'></img>
-                    <p className='self-end pb-[2px]'>Gun's Portfolio</p>
+                <div className='flex justify-center items-center border border-[#454545] bg-[#242424] rounded-md text-[12px] w-[80%] gap-1'>
+                    <ICON_SEARCH className='-scale-x-100' fill='#868686'/>
+                    <p className='self-end pb-[4px]'>Gun's Portfolio</p>
                 </div>
             </div>
             <div className='flex-1 flex justify-end h-full'>
@@ -54,6 +54,6 @@ const TopMenu = () => {
             </div>
         </nav>
     );
-};
+});
 
 export default TopMenu;

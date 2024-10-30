@@ -4,7 +4,7 @@ import { TabListState } from '../../recoil/state';
 import { SelectedTabState } from '../../recoil/state';
 import ICON_CLOSE from '../../image/close.svg';
 
-const TabNav = () => {
+const TabNav = React.memo(() => {
     const [tabList, setTabList] = useRecoilState(TabListState); // 탭 리스트
     const [selectedTab, setSelectedTab] = useRecoilState(SelectedTabState); // 선택된 탭
     const [hoveredTabIndex, setHoveredTabIndex] = useState(null); // 현재 호버된 탭의 인덱스
@@ -80,6 +80,6 @@ const TabNav = () => {
             </div>
         </div>
     );
-};
+});
 
 export default TabNav;

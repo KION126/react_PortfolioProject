@@ -4,7 +4,7 @@ import fileStructureData from '../../jsonData/FileStructureData.json';
 import { useRecoilValue } from 'recoil';
 import { SelectedTabState } from '../../recoil/state';
 
-const Prompt = ({explorerWidth, promptHeight, setPromptHeight}) => {
+const Prompt = ({SideActivityBarWidth, promptHeight, setPromptHeight}) => {
     const selectedTab = useRecoilValue(SelectedTabState); // 선택된 탭
     const [isResizing, setIsResizing] = useState(false);    // 클릭 여부
     const [initialY, setInitialY] = useState(0);            // 초기 Y 좌표
@@ -33,12 +33,11 @@ const Prompt = ({explorerWidth, promptHeight, setPromptHeight}) => {
     const handleMouseMove = (e) => {
         if (isResizing) {
             const newHeight = promptHeight + (initialY - e.clientY); // 높이 계산
-            console.log(e.clientY);
             // 너비 제한 설정
             if(newHeight <= 700){
                 if(newHeight <= 160){
                     if(e.clientY >= 930){    // 최소 높이(150px)에서 커서를 아래로 이동시 탐색기 닫기    
-                        setPromptHeight(0);
+                        setPromptHeight(4);
                     }
                 } else{
                     setPromptHeight(newHeight);
@@ -73,9 +72,6 @@ const Prompt = ({explorerWidth, promptHeight, setPromptHeight}) => {
     // 명령어 실행 함수
     const executeCommand = (command) => {
         const url = findURL(selectedTab, command);
-
-        
-
         switch (command) {
             case 'github':
                 url ? window.confirm('해당 프로젝트의 GitHub로 이동하시겠습니까?') && window.open(url, '_blank') : setMessage(`해당 파일에는 '${command}' 명령어가 존재하지 않습니다.`); 
@@ -133,48 +129,23 @@ const Prompt = ({explorerWidth, promptHeight, setPromptHeight}) => {
 
     return (
         // Explorer의 너비를 받아 Propmt의 너비를 계산하여 적용
-        <div className='absolute bottom-0 w-full bg-[#181818] text-[#c1cccc] border-l border-[#2B2B2B] overflow-hidden'
-            style={{ width: `calc(100% - (${explorerWidth}px + 49px))` }}
+        <div className='absolute bottom-[16px] w-full bg-[#181818] text-[#c1cccc] overflow-hidden'
+            style={{ width: `calc(100% - (${SideActivityBarWidth}px + 49px))` }}
             onClick={() => {inputRef.current.focus();}}
         >
             <div className='relative'>
                 <div
-                    className={`cursor-row-resize z-10 absolute top-0 left-0 right-0 bottom-0 ${borderDiv}`}
+                    className={`cursor-row-resize z-20 absolute top-0 left-0 right-0 bottom-0 ${borderDiv}`}
                     onMouseDown={handleMouseDown}
                     onMouseUp={handleMouseUp}
                 />
-                <div className='h-[1px] bg-[#2B2B2B] absolute top-0 left-0 right-0 bottom-0'/>
+                <div className='h-[1px] bg-[#2B2B2B] absolute top-0 left-0 right-0 bottom-0 z-10'/>
             </div>
-            <div className='overflow-hidden px-4 text-[13px]' style={{height: promptHeight}}>
+            <div className='px-4 text-[13px]' style={{height: promptHeight}}>
                 <div>
                     <div className='w-[45px] py-2 text-[11px] text-center'>
                         터미널
                         <div className='border-t border-[#A48ACF]'></div>
-                    </div>
-                    <div className='text-gray-600 mb-3'>
-                        {/* 명령어 목록 힌트*/}
-                        <table className='w-[300px] '>
-                            <tbody>
-                                <tr>
-                                    <td>&gt; github</td>
-                                    <td>GitHub 보러가기</td>
-                                </tr>
-                                <tr>
-                                    <td>&gt; video</td>
-                                    <td>구현영상 보러가기</td>
-                                </tr>
-                                <tr>
-                                    <td>&gt; paper</td>
-                                    <td>학술지 보러가기</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    {/* 빠른 명령어 목록 */}
-                    <div className='flex gap-5 text-blue-600 text-[11px]'>
-                        <p onClick={() => executeCommand('github')} className="cursor-pointer hover:underline">gitHub</p>
-                        <p onClick={() => executeCommand('video')} className="cursor-pointer hover:underline">video</p>
-                        <p onClick={() => executeCommand('paper')} className="cursor-pointer hover:underline">paper</p>
                     </div>
                     <div className='flex w-full'>
                         <p className='w-[110px]'>PS C:\Users\user&gt;</p>
@@ -192,9 +163,31 @@ const Prompt = ({explorerWidth, promptHeight, setPromptHeight}) => {
                             {inputValue || '\u00a0'}
                         </span>
                     </div>
+                    <div className='text-gray-600 mt-2'>
+                        {/* 빠른 명령어 목록 */}
+                        <table className='w-[300px] leading-[14px]'>
+                            <tbody>
+                                <tr>
+                                    <td className='flex gap-1 text-blue-600'>&gt;
+                                        <p onClick={() => executeCommand('github')} className="cursor-pointer hover:underline">github</p></td>
+                                    <td>Github 보러가기</td>
+                                </tr>
+                                <tr>
+                                    <td className='flex gap-1 text-blue-600'>&gt;
+                                        <p onClick={() => executeCommand('video')} className="cursor-pointer hover:underline">video</p></td>
+                                    <td>구현영상 보러가기</td>
+                                </tr>
+                                <tr>
+                                    <td className='flex gap-1 text-blue-600'>&gt;
+                                        <p onClick={() => executeCommand('paper')} className="cursor-pointer hover:underline">paper</p></td>
+                                    <td>학술지 보러가기</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className='h-[1px] bg-[#2B2B2B] absolute left-0 right-0 bottom-[3px] z-10'/>
                 </div>
             </div>
-            
         </div>
     );
 };
