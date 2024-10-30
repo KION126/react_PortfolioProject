@@ -3,7 +3,7 @@ import '../../style/explorerStyle.css';
 import ExplorerItem from '../ExplorerItem';
 import fileStructureData from '../../jsonData/FileStructureData.json';
 
-const Explorer = ({ setExplorerWidth, width }) => {
+const Explorer = ({ setExplorerWidth, explorerWidth }) => {
     const [isResizing, setIsResizing] = useState(false);    // 클릭 여부
     const [initialX, setInitialX] = useState(0);            // 초기 X 좌표
 
@@ -23,7 +23,7 @@ const Explorer = ({ setExplorerWidth, width }) => {
     // 마우스 Move 이벤트
     const handleMouseMove = (e) => {
         if (isResizing) {
-            const newWidth = width + (e.clientX - initialX);
+            const newWidth = explorerWidth + (e.clientX - initialX);
 
             // 너비 제한 설정
             if(newWidth <= 700){
@@ -55,7 +55,7 @@ const Explorer = ({ setExplorerWidth, width }) => {
 
     return (
         <div className='flex h-full bg-[#181818] text-[#c1cccc] border-l border-[#2B2B2B]'>
-            <div style={{width}}>
+            <div style={{width: explorerWidth}}>
                 <div>
                     <div className='px-4 py-2 text-[11px]'>
                         탐색기

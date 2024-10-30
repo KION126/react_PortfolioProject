@@ -63,7 +63,7 @@ const ExplorerItem = (props) => {
                         className='size-4 self-center'
                     />
                 )}
-                <div className='flex gap-1 py-[2px]'>
+                <div className='flex gap-1 py-[3px]'>
                     {/* 파일 아이콘 */}
                     {!props.item.children && (
                         <img
@@ -72,7 +72,7 @@ const ExplorerItem = (props) => {
                             className='size-[14px] self-center'
                         />
                     )}
-                    <div className='pb-1'>
+                    <div>
                         {props.title}
                     </div>
                 </div>

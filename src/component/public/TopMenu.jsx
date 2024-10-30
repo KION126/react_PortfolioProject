@@ -26,9 +26,8 @@ const TopMenu = () => {
             <div className='flex-1 flex'>
                 <img src={IMG_LOGO} alt='logo' className='size-4 mx-2 self-center'/>
                 {windowWidth <= 1360 ? (
-                    <div className=''>
+                    <div className='rounded-md px-1 py-[2px] hover:bg-[#2D2E2E]'>
                         <img src={ICON_MENU} alt='logo' className='size-5 mx-2'/>
-                        
                     </div>
                     ):(
                     <ul className='flex gap-1 items-center'>
@@ -47,7 +46,7 @@ const TopMenu = () => {
             <div className='flex-1 flex justify-center h-[70%]'>
                 <div className='flex justify-center border border-[#454545] bg-[#242424] rounded-md text-[12px] w-[80%] gap-1'>
                     <img src={ICON_SEARCH} alt='search' className='-scale-x-100'></img>
-                    <p className='self-end pb-[2px]'>Goen's Portfolio</p>
+                    <p className='self-end pb-[2px]'>Gun's Portfolio</p>
                 </div>
             </div>
             <div className='flex-1 flex justify-end h-full'>
