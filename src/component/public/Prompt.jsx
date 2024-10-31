@@ -93,6 +93,9 @@ const Prompt = ({SideActivityBarWidth, promptHeight, setPromptHeight}) => {
 
     // URL 찾기 함수
     const findURL = (selectedTab, command) => {
+        console.log(selectedTab, command);
+        if(selectedTab === 'Welcome') return null;
+
         // Json파일에서 선택된 탭에 해당하는 객체 찾기
         const FindObject = fileStructureData.children.flatMap((child) => child.children)
             .find(item => item.title.toLowerCase() === selectedTab.toLowerCase());
