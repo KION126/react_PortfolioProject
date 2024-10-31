@@ -130,6 +130,12 @@ const Prompt = ({SideActivityBarWidth, promptHeight, setPromptHeight}) => {
         }
     }, [inputValue]);
 
+    // selectedTab 변경 시 inputValue, message 초기화
+    useEffect(() => {
+        setInputValue('');
+        setMessage('');
+    }, [selectedTab]);
+
     return (
         // Explorer의 너비를 받아 Propmt의 너비를 계산하여 적용
         <div className='absolute bottom-[16px] w-full bg-[#181818] text-[#c1cccc] overflow-hidden'
