@@ -4,7 +4,7 @@ const About = () => {
     return (
         <div>
             <h1>About</h1>
-            <p>This is the about component.</p>
+            <p>짧은 자기소개, 학력, 자격증, 경력</p>
         </div>
     );
 };
