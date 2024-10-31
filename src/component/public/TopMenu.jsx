@@ -19,7 +19,7 @@ const TopMenu = React.memo(() => {
         return () => {
           window.removeEventListener('resize', handleResize)
         }
-      }, [])
+    }, [])
 
     return (
         <nav className='flex bg-[#181818] border-b border-[#2B2B2B] h-full text-white items-center'>

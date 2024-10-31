@@ -11,9 +11,9 @@ const Layout = ({ children }) => {
     const [promptHeight, setPromptHeight] = useState(200);
     const [childrenHeight, setChildrenHeight] = useState(window.innerHeight - 72 - 200); // 초기값 설정
 
+    // promptHeight가 변경될 때마다 childrenHeight를 업데이트
     useEffect(() => {
-        // promptHeight가 변경될 때마다 childrenHeight를 업데이트
-        setChildrenHeight(window.innerHeight - 72 -promptHeight);
+        setChildrenHeight(window.innerHeight - 88 -promptHeight);
     }, [promptHeight]);
 
     return (
@@ -26,12 +26,13 @@ const Layout = ({ children }) => {
                     <SideToolbar />
                     <SideActivityBar SideActivityBarWidth={SideActivityBarWidth} setSideActivityBarWidth={setSideActivityBarWidth}/>
                 </div>
-                <div className='bg-[#1F1F1F] w-full text-white'>
+                <div className='bg-[#1F1F1F] w-full text-white overflow-hidden'
+                style={{ width: `calc(100% - (${SideActivityBarWidth}px + 49px))` }}>
                     <TabNav/>
-                    <div className="p-4 overflow-auto" style={{ height: childrenHeight}}>
+                    <div className="p-9 overflow-auto" style={{ height: childrenHeight}}>
                         {children}
                     </div>
-                    <Prompt
+                    <Prompt 
                         SideActivityBarWidth={SideActivityBarWidth}
                         promptHeight={promptHeight}
                         setPromptHeight={setPromptHeight}

@@ -14,7 +14,7 @@ const Prompt = ({SideActivityBarWidth, promptHeight, setPromptHeight}) => {
     const inputRef = useRef(null);
 
     // 영문, 특수문자, 공백만 입력 가능한 정규식
-    const regex = /^[a-zA-Z~!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?` ]{0,10}$/;
+    const regex = /^[a-zA-Z~!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?` ]{0,20}$/;
 
     let borderDiv = isResizing ? 'border-div2-resizing' : 'border-div2';
 
@@ -141,14 +141,14 @@ const Prompt = ({SideActivityBarWidth, promptHeight, setPromptHeight}) => {
                 />
                 <div className='h-[1px] bg-[#2B2B2B] absolute top-0 left-0 right-0 bottom-0 z-10'/>
             </div>
-            <div className='px-4 text-[13px]' style={{height: promptHeight}}>
+            <div className='px-4 text-[15px]' style={{height: promptHeight}}>
                 <div>
                     <div className='w-[45px] py-2 text-[11px] text-center'>
                         터미널
                         <div className='border-t border-[#A48ACF]'></div>
                     </div>
                     <div className='flex w-full'>
-                        <p className='w-[110px]'>PS C:\Users\user&gt;</p>
+                        <p className='w-[120px]'>PS C:\Users\user&gt;</p>
                         {message && <p className='text-red-600'>{message}</p>} {/* 오류 메시지 출력 */}
                         <input
                             ref={inputRef}
@@ -169,17 +169,17 @@ const Prompt = ({SideActivityBarWidth, promptHeight, setPromptHeight}) => {
                             <tbody>
                                 <tr>
                                     <td className='flex gap-1 text-blue-600'>&gt;
-                                        <p onClick={() => executeCommand('github')} className="cursor-pointer hover:underline">github</p></td>
+                                        <p onClick={() => {executeCommand('github'); setInputValue('')}} className="cursor-pointer hover:underline">github</p></td>
                                     <td>Github 보러가기</td>
                                 </tr>
                                 <tr>
                                     <td className='flex gap-1 text-blue-600'>&gt;
-                                        <p onClick={() => executeCommand('video')} className="cursor-pointer hover:underline">video</p></td>
+                                        <p onClick={() => {executeCommand('video'); setInputValue('')}} className="cursor-pointer hover:underline">video</p></td>
                                     <td>구현영상 보러가기</td>
                                 </tr>
                                 <tr>
                                     <td className='flex gap-1 text-blue-600'>&gt;
-                                        <p onClick={() => executeCommand('paper')} className="cursor-pointer hover:underline">paper</p></td>
+                                        <p onClick={() => {executeCommand('paper'); setInputValue('')}} className="cursor-pointer hover:underline">paper</p></td>
                                     <td>학술지 보러가기</td>
                                 </tr>
                             </tbody>

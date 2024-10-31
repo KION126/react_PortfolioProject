@@ -1,0 +1,20 @@
+.pagination-div {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.pagination-div p {
+    transition: color 0.3s ease, font 0.3s ease; /* 색상 전환 효과 */
+    height: 20px; /* 고정된 높이 설정 */
+    line-height: 20px; /* 세로 정렬을 위해 라인 높이 설정 */
+}
+
+.fade-image {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.fade-image.show {
+    opacity: 1;
+}
