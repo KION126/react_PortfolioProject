@@ -10,11 +10,12 @@
     line-height: 20px; /* 세로 정렬을 위해 라인 높이 설정 */
 }
 
-.fade-image {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
 }
 
-.fade-image.show {
-    opacity: 1;
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
 }

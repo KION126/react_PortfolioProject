@@ -5,21 +5,27 @@ const ImageSlider = ({ obj }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [fadeIn, setFadeIn] = useState(true);
     const [isTransitioning, setIsTransitioning] = useState(false);
+    const [isImageLoaded, setIsImageLoaded] = useState(false);
 
-    // 이미지 전환 시 클릭을 일시적으로 막는 함수
     const handleImageChange = (index) => {
         if (isTransitioning || index === currentIndex) return;
 
         setIsTransitioning(true);  // 전환 시작
         setFadeIn(false);  // fade-out 시작
+
         setTimeout(() => {
             setCurrentIndex(index);
-            setFadeIn(true);  // fade-in 시작
+            setIsImageLoaded(false);  // 새로운 이미지 로딩 시작
         }, 300);  // fade-out과 fade-in 전환 사이 시간 조정
+    };
+
+    const handleImageLoad = () => {
+        setIsImageLoaded(true);  // 이미지 로드 완료
+        setFadeIn(true);  // fade-in 시작
 
         setTimeout(() => {
             setIsTransitioning(false);  // 클릭 재허용
-        }, 300);  // 0.3초 후 클릭 가능
+        }, 300);  // 0.5초 후 클릭 가능
     };
 
     return (
@@ -39,11 +45,13 @@ const ImageSlider = ({ obj }) => {
             </div>
 
             {/* 현재 이미지 표시 */}
-            <div className=''>
+            <div className={`image-container ${fadeIn ? 'fade-in' : 'fade-out'}`}>
                 <img
                     src={obj[currentIndex].img}
                     alt={obj[currentIndex].title}
-                    className={`w-full max-w-lg rounded-md fade-image ${fadeIn ? 'show' : ''}`}
+                    onLoad={handleImageLoad}
+                    style={{ display: isImageLoaded ? 'block' : 'none' }}
+                    className='w-full max-w-lg rounded-md'
                 />
             </div>
         </div>
