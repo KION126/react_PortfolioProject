@@ -11,7 +11,8 @@ function App() {
         <Routes>
           <Route 
             path="/" 
-            element={<Main />} />
+            element={<Main />}
+            basename={process.env.PUBLIC_URL} />
         </Routes>
       </Router>
     </RecoilRoot>
