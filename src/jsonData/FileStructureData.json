@@ -4,7 +4,6 @@
         {
             "title": "About",
             "children": [
-                { "title": "Profile.abt", "icon": "about" },
                 { "title": "About.abt", "icon": "about" }
             ]
         },
