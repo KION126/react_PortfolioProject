@@ -7,12 +7,11 @@ import { RecoilRoot } from 'recoil';
 function App() {
   return (
     <RecoilRoot>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route 
             path="/" 
-            element={<Main />}
-            basename={process.env.PUBLIC_URL} />
+            element={<Main />} />
         </Routes>
       </Router>
     </RecoilRoot>
