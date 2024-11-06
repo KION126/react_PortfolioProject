@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkportfolio=self.webpackChunkportfolio||[]).push([[51],{8051:(e,s,l)=>{l.r(s),l.d(s,{default:()=>i});l(9950);var r=l(4414);const i=()=>(0,r.jsxs)("div",{children:[(0,r.jsx)("h1",{children:"Profile"}),(0,r.jsx)("p",{children:"\uac1c\uc778\uc815\ubcf4, \ubcf4\uc720 \uae30\uc220"})]})}}]);

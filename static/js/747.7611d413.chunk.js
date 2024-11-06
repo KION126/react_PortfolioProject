@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkportfolio=self.webpackChunkportfolio||[]).push([[747],{747:(e,s,l)=>{l.r(s),l.d(s,{default:()=>t});l(9950);var p=l(4414);const t=()=>(0,p.jsx)("div",{children:(0,p.jsx)("div",{className:"px-4 py-2 text-[11px]",children:"\uac80\uc0c9"})})}}]);
