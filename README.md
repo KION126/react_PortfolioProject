@@ -15,4 +15,5 @@ npm start
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-https://react-portfolio-project-black.vercel.app/
+Runs the app in Github Pages.\
+Open [https://kion126.github.io/react_PortfolioProject/] to view it in your browser.
