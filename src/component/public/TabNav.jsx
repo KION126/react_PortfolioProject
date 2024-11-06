@@ -43,7 +43,7 @@ const TabNav = React.memo(() => {
     }, [tabList, removedIndex, setSelectedTab]);
 
     return (
-        <div className="w-full bg-[#181818] text-white">
+        <div className="w-full bg-[#181818] text-white overflow-hidden">
             <div className='table border-collapse'>
                 {tabList.map((tab, index) => {
                     const isHovered = hoveredTabIndex === index;

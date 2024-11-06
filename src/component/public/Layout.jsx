@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
                     <SideToolbar />
                     <SideActivityBar SideActivityBarWidth={SideActivityBarWidth} setSideActivityBarWidth={setSideActivityBarWidth}/>
                 </div>
-                <div className='bg-[#1F1F1F] w-full text-white overflow-hidden'
+                <div className='bg-[#1F1F1F] w-full text-white'
                 style={{ width: `calc(100% - (${SideActivityBarWidth}px + 49px))` }}>
                     <TabNav/>
                     <div className="p-9 overflow-auto" style={{ height: childrenHeight}}>

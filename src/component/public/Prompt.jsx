@@ -3,6 +3,7 @@ import '../../style/promptStyle.css';
 import fileStructureData from '../../jsonData/FileStructureData.json';
 import { useRecoilValue } from 'recoil';
 import { SelectedTabState } from '../../recoil/state';
+import ICON_ClOSE from '../../image/close.svg';
 
 const Prompt = ({SideActivityBarWidth, promptHeight, setPromptHeight}) => {
     const selectedTab = useRecoilValue(SelectedTabState); // 선택된 탭
@@ -10,11 +11,9 @@ const Prompt = ({SideActivityBarWidth, promptHeight, setPromptHeight}) => {
     const [initialY, setInitialY] = useState(0);            // 초기 Y 좌표
     const [inputValue, setInputValue] = useState('');   // 입력값
     const [message, setMessage] = useState('');         // 오류 메세지
+    const [toolTipClose, setToolTipClose] = useState(false); // 툴팁 닫기 여부
     const spanRef = useRef(null);
     const inputRef = useRef(null);
-
-    // 영문, 특수문자, 공백만 입력 가능한 정규식
-    const regex = /^[a-zA-Z~!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?` ]{0,20}$/;
 
     let borderDiv = isResizing ? 'border-div2-resizing' : 'border-div2';
 
@@ -54,7 +53,7 @@ const Prompt = ({SideActivityBarWidth, promptHeight, setPromptHeight}) => {
         setMessage(''); // 메세지 초기화
 
         // 정규식과 길이를 검증하여 유효한 값만 상태에 저장
-        if (regex.test(value)) {
+        if (value.length <= 15) {
             setInputValue(value);
         }
     };
@@ -93,13 +92,13 @@ const Prompt = ({SideActivityBarWidth, promptHeight, setPromptHeight}) => {
 
     // URL 찾기 함수
     const findURL = (selectedTab, command) => {
-        console.log(selectedTab, command);
-        if(selectedTab === 'Welcome') return null;
+        if(!selectedTab.includes(".pj")) return null;
 
         // Json파일에서 선택된 탭에 해당하는 객체 찾기
         const FindObject = fileStructureData.children.flatMap((child) => child.children)
-            .find(item => item.title.toLowerCase() === selectedTab.toLowerCase());
+            .find(item => item.title === selectedTab);
     
+
         if (FindObject) {   // 객체가 존재하면 명령어에 해당하는 URL 반환
             return FindObject[command];
         }
@@ -138,10 +137,19 @@ const Prompt = ({SideActivityBarWidth, promptHeight, setPromptHeight}) => {
 
     return (
         // Explorer의 너비를 받아 Propmt의 너비를 계산하여 적용
-        <div className='absolute bottom-[16px] w-full bg-[#181818] text-[#c1cccc] overflow-hidden'
+        <div className={`absolute bottom-[16px] w-full bg-[#181818] text-[#c1cccc] ${promptHeight < 50 ? 'overflow-hidden' : 'overflow-visible'}`}
             style={{ width: `calc(100% - (${SideActivityBarWidth}px + 49px))` }}
             onClick={() => {inputRef.current.focus();}}
         >
+            {!toolTipClose && selectedTab.includes(".pj") &&
+                <div className='tooltip flex'>
+                    <div className='flex flex-col text-left'>
+                        <span className='font-bold'>지금 보고있는 프로젝트 더 자세히 알아보기!</span>
+                        <span>명령어를 입력하거나 명령어 Hint를 클릭하세요.👇</span>
+                    </div>
+                    <img src={ICON_ClOSE} alt='close' className='w-[18px] h-[18px] ml-2 cursor-pointer' onClick={()=>setToolTipClose(true)}/>
+                </div>
+            }
             <div className='relative'>
                 <div
                     className={`cursor-row-resize z-20 absolute top-0 left-0 right-0 bottom-0 ${borderDiv}`}
@@ -150,45 +158,45 @@ const Prompt = ({SideActivityBarWidth, promptHeight, setPromptHeight}) => {
                 />
                 <div className='h-[1px] bg-[#2B2B2B] absolute top-0 left-0 right-0 bottom-0 z-10'/>
             </div>
-            <div className='px-4 text-[15px]' style={{height: promptHeight}}>
+            <div className='px-4 text-[17px]' style={{height: promptHeight}}>
                 <div>
                     <div className='w-[45px] py-2 text-[11px] text-center'>
                         터미널
                         <div className='border-t border-[#A48ACF]'></div>
                     </div>
-                    <div className='flex w-full'>
-                        <p className='w-[120px]'>PS C:\Users\user&gt;</p>
+                    <div className='flex w-full gap-2'>
+                        <p className='w-fit font-consolas font-semibold'>PS C:\Users\user&gt;</p>
                         {message && <p className='text-red-600'>{message}</p>} {/* 오류 메시지 출력 */}
                         <input
                             ref={inputRef}
-                            className='bg-transparent outline-none'
+                            className='bg-transparent outline-none font-consolas'
                             type='text'
                             value={inputValue}
                             onChange={(e) => handleInputChange(e)}
                             onKeyDown={handleKeyPress}
                         />
                         {/* span 요소에 inputValue를 렌더링하여 너비 계산에 사용 */}
-                        <span ref={spanRef} className='absolute invisible'>
+                        <span ref={spanRef} className='absolute invisible font-consolas'>
                             {inputValue || '\u00a0'}
                         </span>
                     </div>
-                    <div className='text-gray-600 mt-2'>
+                    <div className='text-gray-600 mt-4'>
                         {/* 빠른 명령어 목록 */}
-                        <table className='w-[300px] leading-[14px]'>
+                        <table className='w-[300px] leading-tight text-[16px] font-consolas'>
                             <tbody>
                                 <tr>
                                     <td className='flex gap-1 text-blue-600'>&gt;
-                                        <p onClick={() => {executeCommand('github'); setInputValue('')}} className="cursor-pointer hover:underline">github</p></td>
+                                        <p onClick={() => {executeCommand('github'); setInputValue('')}} className="cursor-pointer font-semibold hover:underline hover:underline-offset-[5px]">github</p></td>
                                     <td>Github 보러가기</td>
                                 </tr>
                                 <tr>
                                     <td className='flex gap-1 text-blue-600'>&gt;
-                                        <p onClick={() => {executeCommand('video'); setInputValue('')}} className="cursor-pointer hover:underline">video</p></td>
+                                        <p onClick={() => {executeCommand('video'); setInputValue('')}} className="cursor-pointer font-semibold hover:underline hover:underline-offset-2">video</p></td>
                                     <td>구현영상 보러가기</td>
                                 </tr>
                                 <tr>
                                     <td className='flex gap-1 text-blue-600'>&gt;
-                                        <p onClick={() => {executeCommand('paper'); setInputValue('')}} className="cursor-pointer hover:underline">paper</p></td>
+                                        <p onClick={() => {executeCommand('paper'); setInputValue('')}} className="cursor-pointer font-semibold hover:underline hover:underline-offset-[5px]">paper</p></td>
                                     <td>학술지 보러가기</td>
                                 </tr>
                             </tbody>
