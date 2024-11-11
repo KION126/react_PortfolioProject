@@ -7,14 +7,14 @@
                 { "title": "About.abt", "icon": "about" }
             ]
         },
-        { 
+        {
             "title": "Project",
             "children": [
-                { "title": "OnlineLecture.pj", "icon": "light", "github": "https://github.com/KION126/jsp_mvc2_OnlineLecturePlatform", "video": "https://www.youtube.com/watch?v=NS61b8G-Pgg"},
-                { "title": "InhatcChatbot.pj", "icon": "light", "github": "https://github.com/KION126/aiChatbot_InhatcChatbot", "video": "https://www.youtube.com/watch?v=pj1pUCk8b_E", "paper": "https://ibookkorea.net/Viewer/2024-02/547"},
-                { "title": "InhatcChinema.pj", "icon": "light", "github": "https://github.com/KION126/java_GUI_InhaCinema"},
-                { "title": "KinectMemoryGame.pj", "icon": "light", "github": "https://github.com/KION126/kinect_wpf_PreventionofDementiaMemoryCardGame", "video": "https://www.youtube.com/watch?v=PsFfGQzYxiE", "paper": "https://ibookkorea.net/Viewer/2024-01/113"},
-                { "title": "GganBoo.pj", "icon": "light", "github": "https://github.com/KION126/android_java_GganBoo" }
+                { "title": "OnlineLecture.pj", "koTitle": "온라인 강의 플랫폼.pj", "icon": "light", "github": "https://github.com/KION126/jsp_mvc2_OnlineLecturePlatform", "video": "https://www.youtube.com/watch?v=NS61b8G-Pgg"},
+                { "title": "InhatcChatbot.pj", "koTitle": "대학교 종합정보 챗봇.pj", "icon": "light", "github": "https://github.com/KION126/aiChatbot_InhatcChatbot", "video": "https://www.youtube.com/watch?v=pj1pUCk8b_E", "paper": "https://ibookkorea.net/Viewer/2024-02/547"},
+                { "title": "InhatcChinema.pj", "koTitle": "영화관 에매 윈도우 애플리케이션.pj", "icon": "light", "github": "https://github.com/KION126/java_GUI_InhaCinema"},
+                { "title": "KinectMemoryGame.pj", "koTitle": "치매 예방 기억력 카드 게임.pj", "icon": "light", "github": "https://github.com/KION126/kinect_wpf_PreventionofDementiaMemoryCardGame", "video": "https://www.youtube.com/watch?v=PsFfGQzYxiE", "paper": "https://ibookkorea.net/Viewer/2024-01/113"},
+                { "title": "GganBoo.pj", "koTitle": "공유 ToboList 모바일 앱.pj", "icon": "light", "github": "https://github.com/KION126/android_java_GganBoo" }
             ]
         },
         {

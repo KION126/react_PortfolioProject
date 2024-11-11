@@ -63,17 +63,18 @@ const ExplorerItem = React.memo((props) => {
                         className='size-4 self-center'
                     />
                 )}
-                <div className='flex gap-1 py-[3px]'>
+                <div className='flex gap-1 py-[3px] w-full'>
                     {/* 파일 아이콘 */}
                     {!props.item.children && (
                         <img
                             src={require(`../../image/${props.icon}.png`)}
                             alt="icon"
-                            className='size-[14px] self-center'
+                            className='w-[14px] h-[14px] self-center'
                         />
                     )}
-                    <div>
-                        {props.title}
+                    {/* 타이틀 */}
+                    <div className='whitespace-nowrap overflow-hidden text-ellipsis w-full'>
+                        {props.koTitle ? props.koTitle : props.title}
                     </div>
                 </div>
             </div>
@@ -86,6 +87,7 @@ const ExplorerItem = React.memo((props) => {
                             key={index} 
                             item={child} 
                             title={child.title}
+                            koTitle={child.koTitle}
                             icon={child.icon}
                             padding={parseInt(padding) + 15}
                         />

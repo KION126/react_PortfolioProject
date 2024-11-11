@@ -2,11 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import '../../style/promptStyle.css';
 import fileStructureData from '../../jsonData/FileStructureData.json';
 import { useRecoilValue } from 'recoil';
-import { SelectedTabState } from '../../recoil/state';
+import { SelectedTabState, TabListState } from '../../recoil/state';
 import ICON_ClOSE from '../../image/close.svg';
 
 const Prompt = ({SideActivityBarWidth, promptHeight, setPromptHeight}) => {
     const selectedTab = useRecoilValue(SelectedTabState); // 선택된 탭
+    const tabList = useRecoilValue(TabListState); // 선택된 탭
     const [isResizing, setIsResizing] = useState(false);    // 클릭 여부
     const [initialY, setInitialY] = useState(0);            // 초기 Y 좌표
     const [inputValue, setInputValue] = useState('');   // 입력값
@@ -92,6 +93,7 @@ const Prompt = ({SideActivityBarWidth, promptHeight, setPromptHeight}) => {
 
     // URL 찾기 함수
     const findURL = (selectedTab, command) => {
+        if(tabList.length === 0) return null;
         if(!selectedTab.includes(".pj")) return null;
 
         // Json파일에서 선택된 탭에 해당하는 객체 찾기
@@ -141,7 +143,7 @@ const Prompt = ({SideActivityBarWidth, promptHeight, setPromptHeight}) => {
             style={{ width: `calc(100% - (${SideActivityBarWidth}px + 49px))` }}
             onClick={() => {inputRef.current.focus();}}
         >
-            {!toolTipClose && selectedTab.includes(".pj") &&
+            {tabList.length !== 0 && !toolTipClose && selectedTab.includes(".pj") &&
                 <div className='tooltip flex'>
                     <div className='flex flex-col text-left'>
                         <span className='font-bold'>지금 보고있는 프로젝트 더 자세히 알아보기!</span>
