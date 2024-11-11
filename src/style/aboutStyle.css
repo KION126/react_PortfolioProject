@@ -30,7 +30,8 @@
 }
 
 .font-kr {
-    font-size: 19.4px;
+    line-height: 1.485;
+    font-suize: 20px;
 }
 
 .cursor-div {

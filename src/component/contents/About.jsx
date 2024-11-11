@@ -15,7 +15,7 @@ const About = () => {
         
         // 이미지 숨기기
         const handleMouseLeave = () => {
-            cursorDiv.classList.remove('show'); // show 클래스 제거
+            cursorDiv.classList.remove('show'); // show 클래스 제거 
         };
 
          // 마우스 트래킹
@@ -43,8 +43,8 @@ const About = () => {
     }, []);
 
     return (
-        <div className='flex h-full text-[20px] font-consolas text-[#c1cccc]'>
-            <LineNumbers lines={50} />
+        <div className='flex h-fit text-[20px] font-consolas text-[#c1cccc] text-nowrap'>
+            <LineNumbers lines={55} />
             <div>
                 <div>
                     <span className='syntax'>&lt;!</span>
@@ -115,10 +115,15 @@ const About = () => {
                             <div className='font-kr flex flex-col'>
                                 <div className='!-ml-[30px] flex flex-col border-l-[2px] border-[#404040] pl-[20px]'>
                                     <span>
-                                        안녕하세요, 저는 웹 개발의 왕이 되기 위한 여정을 걷고 있는 왕건입니다.
+                                        안녕하세요!
+                                        <br/>저는 웹 개발의 왕이 되고 싶은 왕건입니다!
                                     </span>
                                     <span>
-                                        프론트엔드와 백엔드 모두에 깊은 관심을 가지고 있으며, 기술과 창의력을 결합하여 다양한 문제를 해결하는 것을 좋아합니다.
+                                        프론트엔드와 백엔드 모두에 깊은 관심을 가지고 있으며, 기술과 창의력을 결합하여 다양한 문제를 해결하는 것을 좋아합니다.<br/>새로운 기술과 트렌드를 적극적으로 학습하고 적용하는 것을 좋아하며, 최근에는 AI에 대한 관심이 생겨 AI와 웹을 결합한 서비스를 개발하고자 합니다.
+                                        
+                                        <br/>특히 자연어 처리와 이미지 인식 등의 분야에 관심이 있으며, 이를 웹 개발에 적용하여 사용자에게 더욱 편리하고 유용한 서비스를 제공하고자 합니다.
+
+                                        <br/>이를 위해 Node.js와 MongoDB를 이용한 서버 개발을 공부하고 있으며, Python과 TensorFlow 등의 AI 라이브러리도 함께 학습하고 있습니다.
                                     </span>
                                     <br />
                                     <span>
@@ -128,20 +133,14 @@ const About = () => {
                                         방학 동안 '브이드림'에서 프론트엔드 개발자로 일하며 React와 RESTful API를 사용해 내부 관리 시스템을 개발한 경험이 있습니다. 
                                     </span>
                                     <span>
-                                        짧은 시간이었지만 많은 것을 배우고 성장할 수 있었던 소중한 경험이었습니다.
+                                        해당 프로젝트에서는 사용자의 요구사항을 파악하고, 이를 바탕으로 시스템을 설계하고 구현하는 과정에서 많은 어려움을 겪었습니다.
+                                    </span>
+                                    <span>
+                                        하지만 저는 포기하지 않고 끝까지 노력했습니다. 문제를 해결하기 위해 다양한 방법을 시도하고, 다른 사람들의 조언을 구하며, <br/>제 자신의 부족한 점을 보완하기 위해 노력하여 프로젝트에 기여할 수 있었습니다. <br/>이 경험은 저에게 큰 자신감을 주었고, 앞으로 더 나은 개발자가 되기 위한 동기부여가 되었습니다.
                                     </span>
                                     <br />
                                     <span>
-                                        최근에는 AI에 대한 관심이 생겨 AI와 웹을 결합한 서비스를 개발하고자 합니다. 
-                                    </span>
-                                    <span>
-                                        특히 자연어 처리와 이미지 인식 등의 분야에 관심이 있으며, 이를 웹 개발에 적용하여 사용자에게 더욱 편리하고 유용한 서비스를 제공하고자 합니다.
-                                    </span>
-                                    <span>
-                                        이를 위해 
-                                    </span>
-                                    <br />
-                                    <span>
+                                        저는 항상 새로운 도전을 두려워하지 않고, 끊임없이 성장하고 발전하기 위해 노력합니다. <br/>앞으로도 지속적인 학습과 경험을 통해 더욱 뛰어난 개발자가 되기 위해 노력할 것입니다.
                                     </span>
                                 </div>
                             </div>
@@ -208,7 +207,7 @@ const About = () => {
                                     <span className='font-semibold text-white'>🏫 학력</span>
                                     <div className='ml-[30px] flex flex-col'>
                                         <span>
-                                            군자디지털과학고등학교 | 디지털전자과 (2020.03 졸업)
+                                            군자디지털과학고등학교 | 디지털전자과 (2020.02 졸업)
                                         </span>
                                         <span>인하공업전문대학교 | 컴퓨터정보공학과 (2020.03 입학 졸업예정)</span>
                                     </div>
@@ -282,7 +281,7 @@ const About = () => {
 
             {/* 마우스 트래킹 div */}
             <div className="cursor-div">
-                <img src={IMG_CVPHOTO} alt="IMG_CVPHOTO" />
+                <img src={IMG_CVPHOTO} alt="IMG_CVPHOTO"/>
             </div>
         </div>
     );
