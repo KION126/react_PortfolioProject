@@ -7,7 +7,7 @@ import { RecoilRoot } from 'recoil';
 function App() {
   return (
     <RecoilRoot>
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router>
         <Routes>
           <Route 
             path="/" 
