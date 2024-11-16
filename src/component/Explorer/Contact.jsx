@@ -41,7 +41,7 @@ const Contact = () => {
         const emailData = {
           email: emailRef.current.value,
           message: messageRef.current.value,
-          currentTime: Date.now(), // 현재 시간을 함께 전송
+          currentTime: Date.now(),
         };
     
         try {
@@ -53,11 +53,12 @@ const Contact = () => {
             body: JSON.stringify(emailData),
           });
     
+          console.log('Response:', response);  // 응답 내용 확인
           const data = await response.json();
     
           if (response.ok) {
             setStatusMessage('이메일 전송 성공');
-            setIsDisable(true); // 타이머 동작
+            setIsDisable(true);
             setTimeout(() => setIsDisable(false), 5 * 60 * 1000); // 5분 후 버튼 활성화
           } else {
             setStatusMessage(data.message || '이메일 전송 실패');
@@ -68,7 +69,7 @@ const Contact = () => {
         }
     
         setIsSending(false);
-      };
+    };
 
     return (
         <div className='text-[12px]'>
