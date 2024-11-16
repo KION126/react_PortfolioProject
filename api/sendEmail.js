@@ -17,6 +17,7 @@ export default async function handler(req, res) {
 
   // 클라이언트의 IP 주소 추출 (Vercel의 경우 X-Forwarded-For 헤더 사용)
   const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  console.log("IP Address:", ipAddress);  // IP 로그 추가
 
   const currentTime = Date.now();
 
