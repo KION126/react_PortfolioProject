@@ -58,8 +58,6 @@ const Contact = () => {
     
           if (response.ok) {
             setStatusMessage('이메일 전송 성공');
-            setIsDisable(true);
-            setTimeout(() => setIsDisable(false), 5 * 60 * 1000); // 5분 후 버튼 활성화
           } else {
             setStatusMessage(data.message || '이메일 전송 실패');
           }
@@ -117,7 +115,7 @@ const Contact = () => {
             </span>
 
             {statusMessage && (
-                <div className={`mt-4 px-2 ${statusMessage.includes('완료') ? 'text-green-500' : 'text-red-500'}`}>
+                <div className={`mt-4 px-2 ${statusMessage.includes('성공') ? 'text-green-500' : 'text-red-500'}`}>
                     {statusMessage}
                 </div>
             )}
