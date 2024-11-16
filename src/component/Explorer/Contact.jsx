@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
 
 const Contact = () => {
     const form = useRef(null);
@@ -46,7 +45,7 @@ const Contact = () => {
         };
     
         try {
-          const response = await fetch('/api/send-email', {
+          const response = await fetch('/api/sendEmail', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
