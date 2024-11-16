@@ -6,7 +6,6 @@ const Contact = () => {
     const messageRef = useRef(null);
     const [statusMessage, setStatusMessage] = useState(null); // 상태 메시지
     const [isSending, setIsSending] = useState(false); // 전송 상태
-    const [isDisable, setIsDisable] = useState(false);
     const placeholder = '내용을 입력하세요.\n(300자 이내)';
 
     // 텍스트가 입력될 때마다 textarea 높이 동적으로 조정
@@ -41,7 +40,6 @@ const Contact = () => {
         const emailData = {
           email: emailRef.current.value,
           message: messageRef.current.value,
-          currentTime: Date.now(),
         };
     
         try {
@@ -75,7 +73,17 @@ const Contact = () => {
                 연락
             </div>
             <form ref={form} onSubmit={sendEmail} className='flex flex-col px-2 pt-2 text-[14px]'>
-                <label>이메일</label>
+                <label>받는 사람</label>
+                <input 
+                    type="email" 
+                    name="my_email" 
+                    placeholder="kg20011216@gmail.com" 
+                    className='w-full h-[26px] px-1 bg-[#313131] border border-[#3c3c3c] transition-colors whitespace-nowrap overflow-hidden text-ellipsis 
+                        focus:border-[#A48ACF] focus:outline-none'
+                    readOnly
+                    disabled
+                />
+                <label className='mt-3'>회신 받을 이메일</label>
                 <input 
                     ref={emailRef}
                     type="email" 
@@ -103,7 +111,7 @@ const Contact = () => {
                     value={isSending ? '전송 중...' : '전송'} 
                     className='mt-3 bg-[#A48ACF] text-white py-1 rounded-sm cursor-pointer 
                         disabled:bg-[#3c3c3c] hover:opacity-80'
-                    disabled={isSending || isDisable} // 버튼 비활성화
+                    disabled={isSending} // 버튼 비활성화
                 />
             </form>
 

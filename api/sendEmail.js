@@ -15,34 +15,36 @@ export default async function handler(req, res) {
     return res.status(400).json({ message: '모든 필드를 채워주세요.' });
   }
 
-  // 클라이언트의 IP 주소 추출 (Vercel의 경우 X-Forwarded-For 헤더 사용)
+  // 클라이언트의 IP 주소 추출
   const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  console.log("IP Address:", ipAddress);  // IP 로그 추가
 
   const currentTime = Date.now();
 
   // IP별 쿨다운 시간 확인
+  // 전에 이 IP 주소로 이메일을 보낸 적이 있고, 쿨다운 시간 내에 요청한 경우
   if (ipCooldowns[ipAddress] && currentTime - ipCooldowns[ipAddress] < cooldownTime) {
     const remainingTime = cooldownTime - (currentTime - ipCooldowns[ipAddress]);
     return res.status(429).json({
-      message: `이메일 전송 쿨다운 중입니다. ${Math.ceil(remainingTime / 1000)}초 후 다시 시도해주세요.`,
+      message: `IP에 따른 이메일 전송 쿨다운 중입니다.\n 
+      ${Math.ceil(remainingTime / 1000)}초 후 다시 시도해주세요.`,
     });
   }
 
   // 이메일 발송을 위한 transporter 설정
   const transporter = nodemailer.createTransport({
-    service: 'gmail', // Gmail을 사용하거나 다른 이메일 서비스를 설정할 수 있습니다.
+    service: 'gmail',
     auth: {
-      user: process.env.EMAIL_USER,  // 발송할 이메일 계정
-      pass: process.env.EMAIL_APP_PASSWORD, // 이메일 비밀번호 또는 앱 비밀번호
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_APP_PASSWORD,
     },
   });
 
+  // gmail을 통해 나 자신에게 이메일을 보내기 위한 설정
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_USER,
-    subject: '새로운 메시지',
-    text: `보낸 사람: ${email}\n메시지 내용: ${message}`,
+    subject: "Wanggun's Portfolio Contact 새로운 메시지",
+    text: `보낸 사람: ${email}\n메시지 내용:\n${message}`,
   };
 
   try {
