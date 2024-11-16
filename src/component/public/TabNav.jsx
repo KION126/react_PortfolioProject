@@ -63,8 +63,8 @@ const TabNav = React.memo(() => {
                                     <img src={require(`../../image/${tab.icon}.png`)} alt='close' className='self-center size-4'>
                                     </img>
                                 </div>
-                                <div className='text-[14px]'>
-                                    {tab.title}
+                                <div className='text-[14px] text-nowrap'>
+                                    {tab.koTitle ? tab.koTitle : tab.title}
                                 </div>
                                 <div className='size-[18px]'>
                                     {isHovered && (

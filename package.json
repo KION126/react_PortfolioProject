@@ -17,10 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
@@ -42,9 +39,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
-    "gh-pages": "^6.2.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14"
-  },
-  "homepage": "https://KION126.github.io/react_PortfolioProject/"
+  }
 }

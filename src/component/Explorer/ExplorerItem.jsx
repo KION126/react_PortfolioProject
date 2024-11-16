@@ -33,7 +33,7 @@ const ExplorerItem = React.memo((props) => {
         const isTabAlreadyAdded = tabList.some(tab => tab.title === props.title);
         if (!props.item.children && !isTabAlreadyAdded) {
             // 새로운 탭 추가
-            setTabList([...tabList, { title: props.title, icon: props.icon }]);
+            setTabList([...tabList, { title: props.title, koTitle: props.koTitle, icon: props.icon }]);
         }
     };
 
