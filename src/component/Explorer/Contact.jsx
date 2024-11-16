@@ -7,6 +7,7 @@ const Contact = () => {
     const messageRef = useRef(null);
     const [statusMessage, setStatusMessage] = useState(null); // 상태 메시지
     const [isSending, setIsSending] = useState(false); // 전송 상태
+    const [isDisable, setIsDisable] = useState(false);
     const placeholder = '내용을 입력하세요.\n(300자 이내)';
 
     // 텍스트가 입력될 때마다 textarea 높이 동적으로 조정
@@ -33,29 +34,42 @@ const Contact = () => {
     };
 
     // emailjs 이메일 전송 함수
-    const sendEmail = (e) => {
-
+    const sendEmail = async (e) => {
         e.preventDefault();
-        
-        setIsSending(true); // 전송 중 상태 활성화
-
-        emailjs
-            .sendForm('service_kwaj3j4', 'template_ea6onjr', form.current, {
-                publicKey: 'PUJuk3WiFYWWcee7O',
-            })
-            .then(
-                () => {
-                    resetForm(); // 초기화 함수 호출
-                    setStatusMessage('전송 완료');
-                    setIsSending(false); // 전송 완료 상태
-                },
-                (error) => {
-                    setStatusMessage('전송 실패');
-                    setIsSending(false); // 전송 완료 상태
-                    console.log('EMAIL FAILED...', error.text);
-                }
-            );
-    };
+    
+        setIsSending(true);
+    
+        const emailData = {
+          email: emailRef.current.value,
+          message: messageRef.current.value,
+          currentTime: Date.now(), // 현재 시간을 함께 전송
+        };
+    
+        try {
+          const response = await fetch('/api/send-email', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(emailData),
+          });
+    
+          const data = await response.json();
+    
+          if (response.ok) {
+            setStatusMessage('이메일 전송 성공');
+            setIsDisable(true); // 타이머 동작
+            setTimeout(() => setIsDisable(false), 5 * 60 * 1000); // 5분 후 버튼 활성화
+          } else {
+            setStatusMessage(data.message || '이메일 전송 실패');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          setStatusMessage('서버와 연결할 수 없습니다.');
+        }
+    
+        setIsSending(false);
+      };
 
     return (
         <div className='text-[12px]'>
@@ -91,7 +105,7 @@ const Contact = () => {
                     value={isSending ? '전송 중...' : '전송'} 
                     className='mt-3 bg-[#A48ACF] text-white py-1 rounded-sm cursor-pointer 
                         disabled:bg-[#3c3c3c] hover:opacity-80'
-                    disabled={isSending} // 버튼 비활성화
+                    disabled={isSending || isDisable} // 버튼 비활성화
                 />
             </form>
 
