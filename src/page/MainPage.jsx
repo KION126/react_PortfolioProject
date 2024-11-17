@@ -1,12 +1,12 @@
 import React, { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import Layout from '../component/public/Layout';
 import { useRecoilValue } from 'recoil';
-import { SelectedTabState } from '../recoil/state';
+import { SelectedTabState, SearchKeywordState } from '../recoil/state';
 
 const MainPage = () => {
     const selectedTab = useRecoilValue(SelectedTabState);
+    const searchKeyword = useRecoilValue(SearchKeywordState);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-    const [layoutWidth, setLayoutWidth] = useState(window.innerWidth)
 
     const selectedTabFile = selectedTab !== null ? selectedTab.split('.')[0] : null;
 
@@ -23,9 +23,7 @@ const MainPage = () => {
     // 창 크기 변경 시
     const handleResize = () => {
         // windowWidth 업데이트
-        setWindowWidth(window.innerWidth)
-        // layoutWidth 업데이트
-        setLayoutWidth()
+        setWindowWidth(window.innerWidth);
     }
 
     // 브라우저 창 크기 감지
@@ -44,7 +42,10 @@ const MainPage = () => {
                     {/* 선택된 탭에 따라 동적으로 로딩 */}
                     {SelectTabComponent  && 
                         <Suspense>
-                            <SelectTabComponent windowWidth = {windowWidth}/>
+                            <SelectTabComponent 
+                                windowWidth = {windowWidth}
+                                searchKeyword={searchKeyword}
+                            />
                         </Suspense>
                     }
             </Layout>

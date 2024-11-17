@@ -1,0 +1,19 @@
+{
+    "fileContent": [
+        {
+            "title": "OnlineLecture.pj", "koTitle": "온라인 강의 플랫폼.pj", "icon": "light","content": "JSP MVC2 Ajax BootStrap Naver API SMTP Eclipse MySQL Tomcat강사, 수강자, 관리자의 권한을 분명하게 나눈 사용자 중심 온라인 강의 플랫폼대규모 온라인 개방형 강좌 플랫폼 KMOOC에서 영감첫 웹 프로젝트로, 웹에서 자주 사용하는 기능을 최대한 많이 경험하기 위해 주제 선정네이버 간편 로그인, 메일 인증, 암호화 등 보안에 중점여러 권한을 가진 사용자의 접근 권한을 깊이 있게 구현강의실 게시판 댓글 데이터를 가져오기 위한 Ajax 사용Model, View, Controller를 명확히 구분하여 MVC2 패턴 구성네이버 간편 로그인메일인증키워드 검색마이페이지강의영상 시청강의자료 다운로드수강생 관리강의실 관리게시판댓글"
+        },
+        {
+            "title": "InhatcChatbot.pj", "koTitle": "대학교 종합정보 챗봇.pj", "icon": "light","content": "Csharp MicrosoftBotFrameWork VisualStudio BotFrameWorkEmulator 인하공업전문대학교의 입시, 종합정보를 알려주는 챗봇인하공업전문대학교에 입학하고 싶은 고등학생들과 현재 재학생들을 위해 개발CLU를 사용하여 예시 질문사례 데이터를 학습 시켜 NLP자연어 처리를 구현학교 홈페이지를 웹 크롤링하여 식당메뉴, 공지사항 등 실시간 데이터를 제공OpenAI의 ChatGPT 35 Turbo 모델의 API를 사용하여 학습되지 않은 질문이나 챗봇 모델이 이해하지 못하는 질문에는 ChatGPT가 대답할 수 있도록 구현 CLU를 통한 NLP자연어 처리 구현 웹 크롤링으로 실시간 데이터 제공 생성형 AI 모델 활용 왕건본인 Microsoft Azure Bot 학습, OpenAI API 연동, Emulator 디자인 황지홍Github Microsoft Azure Bot 연동, 데이터 수집, 웹 크롤링, 데이터 정형화"
+        },
+        {
+            "title": "InhatcChinema.pj", "koTitle": "영화관 에매 윈도우 애플리케이션.pj", "icon": "light","content": "Java WindowApplication NetBeans Swing GUI NetBeans MySQL 실시간 좌석 예매가 가능한 영화관 예매 윈도우 애플리케이션Netbeans GUI로 영화관 결제, 좌석 예매 윈도우 애플리케이션Text Captcha API를 적용시켜 사용자가 사람인지 컴퓨터 프로그램인지 판별, 보안강화영화 포스터 리스트 전환 효과 애니메이션 구현실시간 영화관 좌석 예매를 위한 DB서버 구축 및 로직 구현DB서버 구축로그인회원가입마이페이지영화 포스터 리스트 전환 효과 애니메이션 구현 왕건본인 Text Captcha API 구현, 실시간 좌석 예매 구현, 마이페이지 구현 황지홍Github DB서버 구축, 로그인, 회원가입, 영화 포스터 리스트 전환 효과 애니메이션 구현메인로그인회원가입영화예약좌석선택마이페이지"
+        },
+        {
+            "title": "KinectMemoryGame.pj", "koTitle": "치매 예방 기억력 카드 게임.pj", "icon": "light","content": "Csharp WPF MotionCapture KinectDepthstream VisualStudio Kinect MySQL 치매 예방을 위한 Kinect 메모리 게임고령화 사회와 치매 추정 환자수 증가 추이에 따른 치매 예방을 위한 게임 개발Kinect Depthstream 기능을 활용, 손바닥을 tracking하여 WPF 가상 마우스 커서 조작Memory 카드 뒤집기 로직 구현인지활동 뿐만 아니라 미세한 손의 움직임을 통한 적절한 운동을 유도하여 치매 예방에 기여Kinect Depthstream 활용 Motion CaptureMemory 카드 뒤집기 로직 구현점수 기록 저장 왕건본인 손바닥 tracking, WPF 가상 마우스 커서 조작, 점수 기록 저장, UI 디자인 황지홍Github Kinect Depthstream 연동, 게임로직 구현, DB서버 구축"
+        },
+        {
+            "title": "GganBoo.pj", "koTitle": "공유 ToboList 모바일 앱.pj", "icon": "light","content": "Java SMTP AndroidStudio FireBase자신의 ToDoList를 다른 사람과 공유할 수 있는 모바일 애플리케이션 Android Studio를 사용한 자신의 TodoList를 공유할 수 있는 모바일 애플리케이션 FireBase를 활용하여 회원관리 및 이메일 인증, 팔로우 구현 팔로우한 다른 유저의 TodoList 캘린더를 확인TodoListFireBase를 활용한 팔로우팔로잉이메일 인증 회원가입 로그인 왕건본인 FireBase를 활용한 이메일 인증, 팔로우, 팔로잉, UI 디자인 황지홍Github 달력 TodoList구현, FireBase를 활용한 회원가입, 로그인"
+        }
+    ]
+}
