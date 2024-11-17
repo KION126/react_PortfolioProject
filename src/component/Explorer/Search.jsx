@@ -66,7 +66,7 @@ const Search = () => {
                 />
             </div>
 
-            {searchKeyword.length > 0 && (
+            {searchKeyword && (
                 <div className='pl-4 my-3 whitespace-nowrap overflow-hidden'>
                     {results.length}개의 파일에서 {totalKeywordCount}개 결과
                 </div>
