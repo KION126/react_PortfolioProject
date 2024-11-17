@@ -184,22 +184,22 @@ const Prompt = ({SideActivityBarWidth, promptHeight, setPromptHeight}) => {
                     </div>
                     <div className='text-gray-600 mt-4'>
                         {/* 빠른 명령어 목록 */}
-                        <table className='w-[300px] leading-tight text-[16px] font-consolas'>
+                        <table className='w-[300px] text-[16px] font-consolas'>
                             <tbody>
                                 <tr>
                                     <td className='flex gap-1 text-blue-600'>&gt;
                                         <p onClick={() => {executeCommand('github'); setInputValue('')}} className="cursor-pointer font-semibold hover:underline hover:underline-offset-[5px]">github</p></td>
-                                    <td>Github 보러가기</td>
+                                    <td className='font-kr'>Github 보러가기</td>
                                 </tr>
                                 <tr>
                                     <td className='flex gap-1 text-blue-600'>&gt;
                                         <p onClick={() => {executeCommand('video'); setInputValue('')}} className="cursor-pointer font-semibold hover:underline hover:underline-offset-2">video</p></td>
-                                    <td>구현영상 보러가기</td>
+                                    <td className='font-kr'>구현영상 보러가기</td>
                                 </tr>
                                 <tr>
                                     <td className='flex gap-1 text-blue-600'>&gt;
                                         <p onClick={() => {executeCommand('paper'); setInputValue('')}} className="cursor-pointer font-semibold hover:underline hover:underline-offset-[5px]">paper</p></td>
-                                    <td>학술지 보러가기</td>
+                                    <td className='font-kr'>학술지 보러가기</td>
                                 </tr>
                             </tbody>
                         </table>

@@ -72,13 +72,13 @@ const Contact = () => {
             <div className='px-4 py-2'>
                 연락
             </div>
-            <form ref={form} onSubmit={sendEmail} className='flex flex-col px-2 pt-2 text-[14px]'>
+            <form ref={form} onSubmit={sendEmail} className='flex flex-col px-2 pt-2'>
                 <label>받는 사람</label>
                 <input 
                     type="email" 
                     name="my_email" 
                     placeholder="kg20011216@gmail.com" 
-                    className='w-full h-[26px] px-1 bg-[#313131] border border-[#3c3c3c] transition-colors whitespace-nowrap overflow-hidden text-ellipsis 
+                    className='w-full h-[26px] px-1 cursor-not-allowed bg-[#313131] border border-[#3c3c3c] transition-colors whitespace-nowrap overflow-hidden text-ellipsis 
                         focus:border-[#A48ACF] focus:outline-none'
                     readOnly
                     disabled

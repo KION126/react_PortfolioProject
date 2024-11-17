@@ -5,7 +5,7 @@ import ExplorerItem from './ExplorerItem';
 const FileExplorer = React.memo(() => {
     return (
         <div>
-            <div className='w-full px-4 py-2 text-[11px]'>
+            <div className='w-full px-4 py-2 text-[12px]'>
                 탐색기
             </div>
             <ExplorerItem item={fileStructureData} title={fileStructureData.title} koTitle={fileStructureData.koTitle}padding='0'/>
