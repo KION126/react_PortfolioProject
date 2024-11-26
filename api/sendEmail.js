@@ -26,7 +26,8 @@ export default async function handler(req, res) {
     const remainingTime = cooldownTime - (currentTime - ipCooldowns[ipAddress]);
     return res.status(429).json({
       message: `IP에 따른 이메일 전송 쿨다운 중입니다.\n 
-      ${Math.ceil(remainingTime / 1000)}초 후 다시 시도해주세요.`,
+      ${Math.ceil(remainingTime / 1000)}초 후 다시 시도해주시거나 \n
+      직접 이메일 보내주세요.`,
     });
   }
 
