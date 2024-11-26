@@ -16,4 +16,4 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 Runs the app in Github Pages.\
-Open [https://kion126.github.io/react_PortfolioProject/] to view it in your browser.
+Open [https://wanggunsstudio.vercel.app/](https://wanggunsstudio.vercel.app/) to view it in your browser.
