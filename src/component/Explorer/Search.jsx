@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import fileContentData from '../../jsonData/FileContentData.json';
 import ICON_ARROW_RIGHT from '../../image/arrow_right.png';
 import { useRecoilState } from 'recoil';
-import { SelectedTabState, SearchKeywordState } from '../../recoil/state';
+import { TabListState, SelectedTabState, SearchKeywordState } from '../../recoil/state';
 
 const Search = () => {
+    const [tabList, setTabList] = useRecoilState(TabListState);
     const [searchKeyword, setSearchKeyword] = useRecoilState(SearchKeywordState);
     const [selectedTab, setSelectedTab] = useRecoilState(SelectedTabState);
     const [results, setResults] = useState([]);
@@ -46,6 +47,19 @@ const Search = () => {
         }, 300);
     };
 
+    // 탭 클릭 함수
+    const handleClick = (item) => {
+        // 선택된 탭으로 설정
+        setSelectedTab(item.title);
+        
+        // 이미 추가된 탭인지 확인
+        const isTabAlreadyAdded = tabList.some(tab => tab.title === item.title);
+        if (!isTabAlreadyAdded) {
+            // 새로운 탭 추가
+            setTabList([...tabList, { title: item.title, koTitle: item.koTitle, icon: item.icon }]);
+        }
+    };
+
     useEffect(() => {
         searchKeyword && handleSearch(searchKeyword);
     }, [searchKeyword]);
@@ -78,7 +92,7 @@ const Search = () => {
                     key={index} 
                     className={`flex gap-1 px-2 text-[12px] bg-[#181818] cursor-pointer 
                     hover:bg-[#2a2d2e] ${selectedTab === item.title && 'bg-[#37373d] hover:bg-[#37373d]'} `}
-                    onClick={() => setSelectedTab(item.title)}
+                    onClick={() => handleClick(item)}
                 >
                     
                     <div className="flex gap-1 py-[3px] w-full relative">
