@@ -28,7 +28,7 @@ export const TabListState = atom({
 // ExplorerItem에서 사용하는 open된 폴더 리스트 상태
 export const OpenForderListState = atom({
     key: 'OpenForderListState',
-    default: [],
+    default: ["PORTFOLIO","About","Project"],
     effects: [
         ({ setSelf, onSet }) => {
             // sessionStorage에서 데이터 가져올 때 배열로 변환
