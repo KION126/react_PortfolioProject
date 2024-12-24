@@ -55,7 +55,7 @@ const ProjectSection = ({ windowWidth, title, period, teamType, techStack, platf
                     </div><br/>
                     <div>
                         <p className='text-[20px] font-bold font-kr'>{applyHighlight('🔨 Technology Stack', searchKeyword)}</p>
-                        <p className='break-words'>{applyHighlight(techStack, searchKeyword)}</p>
+                        <p className='break-words text-wrap'>{applyHighlight(techStack, searchKeyword)}</p>
                     </div><br/>
                     <div>
                         <p className='text-[20px] font-bold font-kr'>{applyHighlight('🔧 Platform', searchKeyword)}</p>
@@ -78,7 +78,7 @@ const ProjectSection = ({ windowWidth, title, period, teamType, techStack, platf
                         </div>
                     </div><br/>
                     <div className='font-kr'>
-                        <p className='text-[20px] font-bold'>{applyHighlight('👨‍👦‍👦 Members', searchKeyword)}</p>
+                        <p className='text-[20px] font-bold'>{members && applyHighlight('👨‍👦‍👦 Members', searchKeyword)}</p>
                         <ul className='text-[16px] pl-2 leading-8'>
                             {members?.map((member, idx) => (
                                 <li key={idx}>
