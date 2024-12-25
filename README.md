@@ -20,7 +20,7 @@ ___
 
 ---
 
-### 미리보기
+### Preview of the Project 🔍
 **Main** | Welcome 페이지
 ![main](https://github.com/user-attachments/assets/8793ee1d-2a91-4ca4-85c1-8eacd3455afb)
 
