@@ -32,7 +32,7 @@ ___
 
 ---
 
-### 웹 호스팅 
+### Web Hosting 🌐
 **Vercel** <br>
 [https://wanggunsstudio.vercel.app](https://wanggunsstudio.vercel.app)🟢 <br>
 
