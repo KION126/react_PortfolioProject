@@ -170,17 +170,17 @@ const About = () => {
                                 <div className='!-ml-[30px] flex flex-col border-l-[2px] border-[#404040] pl-[20px]'>
                                     <span className='font-semibold text-white'>🔨 Frontend</span>
                                     <div className='ml-[30px] flex flex-col'>
-                                        <span>HTML, CSS, JavaScript, React, Bootstrap</span>
+                                        <span> - HTML, CSS, JavaScript, React, Bootstrap</span>
                                     </div>
                                     <br />
                                     <span className='font-semibold text-white'>🔧 Backend</span>
                                     <div className='ml-[30px] flex flex-col'>
-                                        <span>- Java, C#, C, Python, JSP, Spring Boot, MySQL, OracleDB, MariaDB, Firebase</span>
+                                        <span> - Java, C#, C, Python, JSP, Spring Boot, MySQL, OracleDB, MariaDB, Firebase</span>
                                     </div>
                                     <br />
                                     <span className='font-semibold text-white'>🛠️ Tools</span>
                                     <div className='ml-[30px] flex flex-col'>
-                                        <span>- Git, Notion, Postman, VS, VSCode, Eclipse, Figma, AWS, Linux</span>
+                                        <span> - Git, Notion, Postman, VS, VSCode, Eclipse, Figma, AWS, Linux</span>
                                     </div>
                                 </div>
                             </div>
@@ -207,9 +207,14 @@ const About = () => {
                                     <span className='font-semibold text-white'>🏫 학력</span>
                                     <div className='ml-[30px] flex flex-col'>
                                         <span>
-                                            군자디지털과학고등학교 | 디지털전자과 (2020.02 졸업)
+                                            군자디지털과학고등학교 | 디지털전자과 (~2020.02 | 졸업)
                                         </span>
-                                        <span>인하공업전문대학교 | 컴퓨터정보공학과 (2020.03 입학 졸업예정)</span>
+                                        <span>
+                                            인하공업전문대학 | 컴퓨터정보공학과 (~2020.02 | 졸업)
+                                        </span>
+                                        <span>
+                                            인하공업전문대학 | 컴퓨터정보공학과(심화) (2020.02~ | 재학)
+                                        </span>
                                     </div>
                                     <br />
                                     <span className='font-semibold text-white'>📇 경력</span>
@@ -218,9 +223,16 @@ const About = () => {
                                             <a className='underline decoration-[#c1cccc]' href='https://www.vdream.co.kr/' target='__brank'>브이드림</a>
                                             <span className='italic'> (2024.08 ~ 2024.10)</span>
                                         </div>
-                                        <span>- 프리랜서</span>
-                                        <span>- 나무컨벤션 홈페이지 구축 ('Imweb' 플랫폼)</span>
-                                        <span>- 내부관리시스템 프론트엔드 (React, RESTful)</span>
+                                        <span> - 프리랜서</span>
+                                        <span> - 나무컨벤션 홈페이지 구축 ('Imweb' 플랫폼)</span>
+                                        <span> - 내부관리시스템 프론트엔드 (React)</span>
+
+                                        <div>
+                                            <a className='underline decoration-[#c1cccc]' href='https://www.vdream.co.kr/' target='__brank'>브이드림</a>
+                                            <span className='italic'> (2025.01~ | 재직)</span>
+                                        </div>
+                                        <span> - 정규직 전환형 인턴</span>
+                                        <span> - 내부관리시스템 풀스택택 (React, RESTful(FastAPI))</span>
                                     </div>
                                 </div>
                             </div>
